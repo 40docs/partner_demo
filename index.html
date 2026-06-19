@@ -558,21 +558,21 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.55em;width:9px;heig
       <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:clamp(10px,1.2vw,14px)" data-fdid="s13e19">
         <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="s13e20">
           <div style="padding:6px 8px;background:rgba(48,127,226,0.08);border-bottom:1px solid var(--line)" data-fdid="s13e21">
-            <div style="font-size:10px;font-weight:700;color:var(--data)" data-fdid="s13e22">100 Mbps</div>
+            <div style="font-size:10px;font-weight:700;color:var(--data)" data-fdid="s13e22">10 TB / mo</div>
           </div>
-          <img src="assets/pasted-1781728905103-0.png" alt="Azure 100 Mbps pricing" style="width:100%;display:block" data-fdid="s13e23">
+          <img src="assets/10tbazure.png" alt="Azure Firewall Premium pricing — 10 TB/mo" style="width:100%;display:block" data-fdid="s13e23">
         </div>
         <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="s13e24">
           <div style="padding:6px 8px;background:rgba(144,99,205,0.08);border-bottom:1px solid var(--line)" data-fdid="s13e25">
-            <div style="font-size:10px;font-weight:700;color:var(--control)" data-fdid="s13e26">500 Mbps</div>
+            <div style="font-size:10px;font-weight:700;color:var(--control)" data-fdid="s13e26">100 TB / mo</div>
           </div>
-          <img src="assets/pasted-1781879973800-0.png" alt="Azure 500 Mbps pricing" style="width:100%;display:block" data-fdid="s13e27">
+          <img src="assets/100tbazure.png" alt="Azure Firewall Premium pricing — 100 TB/mo" style="width:100%;display:block" data-fdid="s13e27">
         </div>
         <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="s13e28">
           <div style="padding:6px 8px;background:rgba(60,177,126,0.08);border-bottom:1px solid var(--line)" data-fdid="s13e29">
-            <div style="font-size:10px;font-weight:700;color:var(--saas)" data-fdid="s13e30">5 Gbps</div>
+            <div style="font-size:10px;font-weight:700;color:var(--saas)" data-fdid="s13e30">1,000 TB / mo</div>
           </div>
-          <img src="assets/pasted-1781728972682-0.png" alt="Azure 5 Gbps pricing" style="width:100%;display:block" data-fdid="s13e31">
+          <img src="assets/1000tbazure.png" alt="Azure Firewall Premium pricing — 1,000 TB/mo" style="width:100%;display:block" data-fdid="s13e31">
         </div>
       </div>
     </div>
@@ -631,7 +631,38 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.55em;width:9px;heig
 
     <p class="lead build" style="margin-top:clamp(14px,2.5vh,24px);max-width:68ch;font-size:clamp(12px,1.1vw,15px)" data-fdid="saws20">AWS Network Firewall bills per firewall endpoint per AZ plus a per-GB inspection fee. With advanced inspection (TLS/IDPS) enabled across 2 AZs, inspection fees dominate — at 1,000 TB/mo they are ~41× the fixed endpoint charge.</p>
 
-    <p class="lead build" style="margin-top:clamp(14px,2.4vh,20px);max-width:68ch;font-size:clamp(11px,1vw,13px);opacity:0.85" data-fdid="saws21">Notes: Two-AZ deployment (2 firewall endpoints). Total = fixed endpoint/network usage ($1,612.22/mo) + advanced inspection (≈ $0.0666/GB). Avg throughput is the sustained rate equivalent to the monthly volume spread over 730 hours. Data transfer and rule-group charges may apply separately.</p>
+    <!-- AWS Pricing Calculator Screenshots with zoom -->
+    <div class="build" style="margin-top:clamp(16px,2.5vh,24px)" data-fdid="saws34">
+      <h3 style="font-size:clamp(13px,1.2vw,16px);margin-bottom:clamp(10px,1.5vh,14px);color:var(--muted)" data-fdid="saws35">Source: AWS Pricing Calculator (click to zoom)</h3>
+      <div class="grid" style="grid-template-columns:1fr 1fr 1fr 1fr;gap:clamp(8px,1vw,12px)" data-fdid="saws36">
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="saws37">
+          <div style="padding:6px 8px;background:rgba(231,76,60,0.08);border-bottom:1px solid var(--line)" data-fdid="saws38">
+            <div style="font-size:10px;font-weight:700;color:var(--accent)" data-fdid="saws39">Endpoint usage (2 AZ)</div>
+          </div>
+          <img src="assets/awsendpointcost.png" alt="AWS Network Firewall endpoint hourly charges (2 AZ)" style="width:100%;display:block" data-fdid="saws40">
+        </div>
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="saws41">
+          <div style="padding:6px 8px;background:rgba(48,127,226,0.08);border-bottom:1px solid var(--line)" data-fdid="saws42">
+            <div style="font-size:10px;font-weight:700;color:var(--data)" data-fdid="saws43">10 TB / mo</div>
+          </div>
+          <img src="assets/10tbaws.png" alt="AWS Network Firewall data processing — 10 TB/mo" style="width:100%;display:block" data-fdid="saws44">
+        </div>
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="saws45">
+          <div style="padding:6px 8px;background:rgba(144,99,205,0.08);border-bottom:1px solid var(--line)" data-fdid="saws46">
+            <div style="font-size:10px;font-weight:700;color:var(--control)" data-fdid="saws47">100 TB / mo</div>
+          </div>
+          <img src="assets/100tbaws.png" alt="AWS Network Firewall data processing — 100 TB/mo" style="width:100%;display:block" data-fdid="saws48">
+        </div>
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="saws49">
+          <div style="padding:6px 8px;background:rgba(60,177,126,0.08);border-bottom:1px solid var(--line)" data-fdid="saws50">
+            <div style="font-size:10px;font-weight:700;color:var(--saas)" data-fdid="saws51">1,000 TB / mo</div>
+          </div>
+          <img src="assets/1000tbaws.png" alt="AWS Network Firewall data processing — 1,000 TB/mo" style="width:100%;display:block" data-fdid="saws52">
+        </div>
+      </div>
+    </div>
+
+    <p class="lead build" style="margin-top:clamp(14px,2.4vh,20px);max-width:68ch;font-size:clamp(11px,1vw,13px);opacity:0.85" data-fdid="saws21">Notes: Two-AZ deployment (2 firewall endpoints). Total = fixed endpoint hourly — network usage + advanced inspection ($1,612.22/mo) — plus per-GB data processing (≈ $0.065/GB; AWS bills 1 TB = 1024 GB). Avg throughput is the sustained rate equivalent to the monthly volume spread over 730 hours. Data transfer and rule-group charges may apply separately.</p>
 
     <div class="spine" data-fdid="saws22">
       <div class="node n-data on" data-fdid="saws23"><div class="lbl" data-fdid="saws24">Data plane<small>Insertion</small></div><div class="dot" data-fdid="saws25"></div></div>
@@ -708,9 +739,9 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.55em;width:9px;heig
         </div>
         <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="s14e36">
           <div style="padding:6px 8px;background:rgba(60,177,126,0.08);border-bottom:1px solid var(--line)" data-fdid="s14e37">
-            <div style="font-size:10px;font-weight:700;color:var(--saas)" data-fdid="s14e38">D4s_v5 (VM04)</div>
+            <div style="font-size:10px;font-weight:700;color:var(--saas)" data-fdid="s14e38">D16s_v5 (VM16)</div>
           </div>
-          <img src="assets/pasted-1781792641301-0.png" alt="Azure D4s_v5 pricing" style="width:100%;display:block" data-fdid="s14e39">
+          <img src="assets/d16sv5azurecost.png" alt="Azure D16s_v5 pricing" style="width:100%;display:block" data-fdid="s14e39">
         </div>
       </div>
     </div>
