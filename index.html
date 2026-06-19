@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fortinet Cloud Security — Partner Opportunity</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f4f6f9; --card:#ffffff; --card2:#eef1f6; --ink:#1d2733; --dark:#16202b;
+  --accent:#DA291C; --muted:#5a6474; --dim:#d4d9e0; --line:#e3e7ee;
+  --data:#307FE2; --control:#9063CD; --saas:#3CB17E; --teal:#2CCCD3;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:'Inter',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.deck{width:100%;height:100%;position:relative}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;
+  padding:clamp(44px,7.5vh,88px) clamp(40px,6.5vw,104px);opacity:0;transition:opacity .45s ease;z-index:2}
+.slide.active{display:flex;opacity:1}
+.slide.img-slide{padding:0;align-items:center;justify-content:center;background:#fff}
+.slide.img-slide img{max-width:92%;max-height:92%;object-fit:contain}
+
+/* Backgrounds */
+.dark{background:radial-gradient(120% 120% at 80% 0%,#22303f 0%,#16202b 55%,#0f1721 100%);color:#fff}
+.dark h1,.dark h2,.dark h3{color:#fff}
+.title-slide{background:radial-gradient(130% 130% at 85% -10%,#2a3a4c 0%,#16202b 55%,#0e151d 100%);color:#fff;justify-content:flex-end;align-items:flex-start}
+.title-slide h1{color:#fff}
+
+/* Typography */
+h1{font-size:clamp(46px,6.6vw,84px);font-weight:900;line-height:1.04;letter-spacing:-1.5px;color:var(--dark)}
+h2{font-size:clamp(32px,4.2vw,56px);font-weight:800;line-height:1.12;letter-spacing:-.6px;color:var(--dark)}
+h3{font-size:clamp(18px,2.1vw,27px);font-weight:700;color:var(--dark);letter-spacing:-.2px}
+.kicker{font-size:clamp(12px,1.15vw,15px);font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.dark .kicker{color:#ff6b5e}
+.subtitle{font-size:clamp(18px,2.3vw,28px);color:var(--muted);font-weight:400;line-height:1.4}
+.dark .subtitle{color:#aebccd}
+.lead{font-size:clamp(17px,1.7vw,22px);line-height:1.55;color:var(--muted);font-weight:400}
+.dark .lead{color:#b9c6d6}
+.accent-line{width:72px;height:5px;background:var(--accent);border-radius:3px;margin:22px 0}
+.big{font-size:clamp(54px,9vw,120px);font-weight:900;line-height:.9;letter-spacing:-3px}
+.text-accent{color:var(--accent)}
+.text-data{color:var(--data)} .text-control{color:var(--control)} .text-saas{color:var(--saas)}
+
+/* Brand bar */
+.brandbar{position:absolute;top:clamp(28px,4vh,46px);left:clamp(40px,6.5vw,104px);display:flex;align-items:center;gap:10px;z-index:5}
+.brandbar img{height:78px}
+.brandbar .mark{width:13px;height:13px;border-radius:3px;background:var(--accent);flex:0 0 auto}
+.brandbar .wordmark{font-weight:800;letter-spacing:-.5px;font-size:38px;color:var(--ink)}
+.dark .brandbar .wordmark,.title-slide .brandbar .wordmark{color:#fff}
+
+/* Cards & grid */
+.grid{display:grid;gap:clamp(14px,1.5vw,22px)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:clamp(18px,1.9vw,28px);box-shadow:0 2px 14px rgba(20,32,43,.05)}
+.card.dark{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);box-shadow:none}
+.card h3{margin-bottom:8px}
+.card p,.card li{color:var(--muted);font-size:clamp(14px,1.15vw,17px);line-height:1.5}
+.dark .card p,.dark .card li{color:#b9c6d6}
+.tag{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.3px;padding:5px 13px;border-radius:999px}
+.ic{width:clamp(34px,3.4vw,46px);height:clamp(34px,3.4vw,46px);flex:0 0 auto}
+.row{display:flex;gap:clamp(14px,1.8vw,26px);align-items:stretch}
+.chip{display:inline-flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 16px;font-weight:600;font-size:clamp(14px,1.2vw,18px);color:var(--ink)}
+.dark .chip{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#fff}
+.chip img{width:26px;height:26px}
+
+/* Plane spine indicator (recurring) */
+.spine{position:absolute;top:clamp(26px,4vh,46px);right:clamp(26px,3vw,48px);display:flex;flex-direction:column;gap:8px;z-index:6}
+.spine .node{display:flex;align-items:center;gap:11px;justify-content:flex-end;opacity:.38;transition:opacity .3s}
+.spine .node .lbl{font-size:12.5px;font-weight:700;letter-spacing:.4px;text-align:right;line-height:1.1}
+.spine .node .lbl small{display:block;font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.8px;text-transform:uppercase}
+.dark .spine .node .lbl small{color:#8da0b4}
+.spine .dot{width:13px;height:13px;border-radius:50%;border:2.5px solid currentColor;flex:0 0 auto}
+.spine .node.on{opacity:1}
+.spine .node.on .dot{background:currentColor}
+.spine .n-data{color:var(--data)} .spine .n-control{color:var(--control)} .spine .n-saas{color:var(--saas)}
+.spine .connector{width:2.5px;height:14px;background:var(--dim);margin-right:5px;align-self:flex-end}
+
+/* Big stacked plane visual (act dividers) */
+.planestack{display:flex;flex-direction:column;gap:clamp(12px,1.8vh,20px);max-width:760px}
+.planestack .prow{display:flex;align-items:center;gap:clamp(16px,2vw,26px);padding:clamp(16px,2.2vh,26px) clamp(20px,2.4vw,32px);border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);opacity:.42;transition:opacity .3s}
+.planestack .prow.on{opacity:1;background:rgba(255,255,255,.07);border-color:currentColor;box-shadow:0 0 0 1px currentColor, 0 10px 40px rgba(0,0,0,.25)}
+.planestack .pdot{width:clamp(28px,3vw,42px);height:clamp(28px,3vw,42px);border-radius:50%;border:3px solid currentColor;flex:0 0 auto}
+.planestack .prow.on .pdot{background:currentColor}
+.planestack .ptxt{display:flex;flex-direction:column}
+.planestack .pname{font-size:clamp(24px,3.2vw,40px);font-weight:800;letter-spacing:-.5px;color:#fff;line-height:1}
+.planestack .psub{font-size:clamp(12px,1.2vw,15px);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-top:6px}
+.planestack .n-data{color:var(--data)} .planestack .n-control{color:var(--control)} .planestack .n-saas{color:var(--saas)}
+
+/* Pill / badges */
+.planebadge{display:inline-flex;align-items:center;gap:11px;padding:9px 18px 9px 11px;border-radius:999px;font-weight:800;font-size:clamp(13px,1.15vw,16px);letter-spacing:.3px}
+.planebadge .num{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900}
+
+ul.clean{list-style:none;display:flex;flex-direction:column;gap:clamp(8px,1vh,14px)}
+ul.clean li{position:relative;padding-left:26px;font-size:clamp(15px,1.3vw,19px);line-height:1.45;color:var(--muted)}
+.dark ul.clean li{color:#c3cfdd}
+ul.clean li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;border-radius:2px;background:var(--accent)}
+
+.placeholder{border:1.5px dashed var(--dim);border-radius:10px;padding:9px 14px;font-size:13px;color:var(--muted);background:rgba(0,0,0,.015);font-weight:600}
+.dark .placeholder{border-color:rgba(255,255,255,.22);color:#9fb0c2;background:rgba(255,255,255,.03)}
+
+/* Build animations */
+.build{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1)}
+.build.visible{opacity:1;transform:none}
+.build-bounce{opacity:0;transform:translateY(20px) scale(.95);transition:opacity .4s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
+.build-bounce.visible{opacity:1;transform:none}
+
+/* Chrome */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),#ff6b5e);z-index:100;transition:width .35s}
+#counter{position:fixed;bottom:15px;right:22px;color:var(--muted);font-size:12px;font-weight:600;z-index:100;letter-spacing:.5px}
+#goto-modal{position:fixed;inset:0;background:rgba(10,16,22,.55);z-index:300;display:none;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+#goto-modal.open{display:flex}
+#goto-panel{background:#fff;border-radius:16px;width:460px;max-width:90vw;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 24px 70px rgba(0,0,0,.35)}
+#goto-header{padding:16px 20px;border-bottom:1px solid var(--dim);display:flex;gap:12px;align-items:center}
+#goto-input{flex:1;border:1.5px solid var(--dim);border-radius:9px;padding:9px 14px;font-size:15px;font-family:inherit;outline:none}
+#goto-input:focus{border-color:var(--accent)}
+#goto-fs{flex:none;background:none;border:1.5px solid var(--dim);border-radius:8px;padding:8px 12px;font-size:13px;font-weight:600;color:var(--ink,#374151);cursor:pointer;white-space:nowrap;font-family:inherit}
+#goto-fs:hover{border-color:var(--accent)}
+#goto-list{overflow-y:auto;padding:8px 0}
+.goto-item{display:flex;gap:12px;align-items:center;padding:9px 20px;cursor:pointer;font-size:14px;color:var(--ink)}
+.goto-item:hover{background:var(--card2)}
+.goto-item.current{background:var(--card2);font-weight:600}
+.goto-item.filtered-out{display:none}
+.goto-num{width:30px;height:30px;border-radius:8px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.goto-item.current .goto-num{background:var(--accent);color:#fff}
+#help{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:26px 30px;border-radius:14px;font-size:14px;line-height:2;z-index:180;display:none;border:1px solid var(--dim);box-shadow:0 8px 40px rgba(0,0,0,.18)}
+#help kbd{background:var(--card2);padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600}
+
+/* fd-print-css */
+@page{size:1280px 720px landscape;margin:0}
+@media print{
+  html,body{width:auto;height:auto;overflow:visible;background:#fff}
+  *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important }
+  #progress,#counter,#help,#goto-modal{display:none !important}
+  .deck{position:static;width:auto;height:auto}
+  .slide{position:relative !important;inset:auto;display:flex !important;opacity:1 !important;
+    transition:none !important;width:1280px;height:720px;overflow:hidden;
+    break-after:page;page-break-after:always}
+  .slide:last-child{break-after:auto;page-break-after:auto}
+  .build,.build-bounce{opacity:1 !important;transform:none !important}
+}
+
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="counter"></div>
+
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1 — TITLE -->
+  <div class="slide title-slide" style="justify-content:center">
+    <div class="brandbar" data-fdid="s1e0"><img src="assets/Fortinet-logo-rgb-white-red.svg" alt="Fortinet" data-fdid="s1e1"></div>
+    <div class="kicker" data-fdid="s1e2">Briefing</div>
+    <h1 data-fdid="s1e3">Cloud Security,<br>built into your practice</h1>
+    <div class="accent-line" data-fdid="s1e4"></div>
+    <div class="subtitle" style="max-width:34ch" data-fdid="s1e5">Five repeatable cloud conversations. One Security Fabric. A clear path to grow every account.</div>
+  </div>
+
+  <!-- SLIDE 2 — WHO IS FORTINET -->
+  <div class="slide dark" style="justify-content:flex-start">
+    <div class="brandbar" data-fdid="s2e0"><img src="assets/Fortinet-logo-rgb-white-red.svg" alt="Fortinet" data-fdid="s2e1"></div>
+    <div class="kicker" style="margin-top:clamp(70px,11vh,104px)" data-fdid="s2e2">Section 0 · The Foundation</div>
+    <h2 style="max-width:18ch" data-fdid="s2e3">A security-first vendor you can build a practice on</h2>
+    <div class="row" style="margin-top:clamp(18px,3vh,32px);gap:clamp(24px,3.5vw,52px);align-items:flex-start" data-fdid="s2e4">
+      <div style="flex:1;display:flex;flex-direction:column;gap:clamp(12px,1.8vh,18px)" data-fdid="s2e5">
+        <div class="card dark build" style="padding:clamp(14px,1.6vw,20px)" data-fdid="s2e6"><h3 style="color:#fff" data-fdid="s2e7">Security-first</h3><p data-fdid="s2e8">Not a networking company that bolted security on. Security is the company.</p></div>
+        <div class="card dark build" style="padding:clamp(14px,1.6vw,20px)" data-fdid="s2e9"><h3 style="color:#fff" data-fdid="s2e10">One Security Fabric</h3><p data-fdid="s2e11">Strong standalone products that also integrate — sharing intelligence, management, and logging when you want them to.</p></div>
+        <div class="card dark build" style="padding:clamp(14px,1.6vw,20px)" data-fdid="s2e12"><h3 style="color:#fff" data-fdid="s2e13"><span style="color:#2CCCD3;font-weight:900" data-fdid="s2e14">55+ products</span> — a complete portfolio spanning the full breadth of security.</h3></div>
+      </div>
+      <div class="build-bounce" style="flex:1.15;align-self:flex-start;transform:translateY(-18.75%);background:#fff;border-radius:18px;padding:clamp(14px,1.6vw,22px);box-shadow:0 16px 50px rgba(0,0,0,.32)" data-fdid="s2e15">
+        <img src="assets/pasted-1780685811856-0.png" alt="Fortinet Security Fabric" style="width:100%;height:auto;display:block;border-radius:8px" data-fdid="s2e16">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2b — FORTINET IN CANADA -->
+  <div class="slide dark">
+    <div class="kicker" data-fdid="s3e0">Section 0 · The Foundation</div>
+    <h2 style="max-width:20ch" data-fdid="s3e1">The <span style="color:#2CCCD3" data-fdid="s3e2">#1 cybersecurity company</span> in Canada</h2>
+    <p class="lead build" style="margin-top:10px;max-width:64ch" data-fdid="s3e3">A vendor your customers already know and trust — deeply invested, locally present, and #1 in market share.</p>
+    <div class="grid build" style="grid-template-columns:repeat(4,1fr);margin-top:clamp(18px,3vh,30px);gap:clamp(12px,1.5vw,20px)" data-fdid="s3e4">
+      <div class="card dark" style="border-top:4px solid var(--data)" data-fdid="s3e5"><div class="big" style="font-size:clamp(30px,3.4vw,46px);color:#fff" data-fdid="s3e6">#1</div><p style="margin-top:4px;font-size:13.5px" data-fdid="s3e7">in market share — units shipped, IDC 2019–2023 (2×+ next competitor)</p></div>
+      <div class="card dark" style="border-top:4px solid var(--saas)" data-fdid="s3e8"><div class="big" style="font-size:clamp(30px,3.4vw,46px);color:#48D597" data-fdid="s3e9">10,000+</div><p style="margin-top:4px;font-size:13.5px" data-fdid="s3e10">customers across Canada — growing 20%+ annually</p></div>
+      <div class="card dark" style="border-top:4px solid var(--control)" data-fdid="s3e11"><div class="big" style="font-size:clamp(30px,3.4vw,46px);color:#fff" data-fdid="s3e12">~2,600</div><p style="margin-top:4px;font-size:13.5px" data-fdid="s3e13">employees across Canada — hiring hundreds more each year</p></div>
+      <div class="card dark" style="border-top:4px solid var(--accent)" data-fdid="s3e14"><div class="big" style="font-size:clamp(30px,3.4vw,46px);color:#fff" data-fdid="s3e15">2,450+</div><p style="margin-top:4px;font-size:13.5px" data-fdid="s3e16">partners under contract, serving every business segment</p></div>
+    </div>
+    <div class="row build" style="margin-top:clamp(14px,2.4vh,24px);gap:clamp(14px,1.8vw,24px);align-items:stretch" data-fdid="s3e17">
+      <div class="card dark" style="flex:1.3;border-left:4px solid var(--accent)" data-fdid="s3e18">
+        <div class="tag" style="background:rgba(218,41,28,.18);color:#ff6b5e" data-fdid="s3e19">In Canada, Fortinet protects</div>
+        <p style="margin-top:8px" data-fdid="s3e20">3 of the 5 big banks · 4 of the largest telcos · several of the largest provincial healthcare orgs · utilities, school boards, higher ed, municipal government, manufacturing &amp; more.</p>
+      </div>
+      <div class="card dark" style="flex:1;border-left:4px solid var(--teal)" data-fdid="s3e21">
+        <div class="tag" style="background:rgba(44,204,211,.16);color:#2CCCD3" data-fdid="s3e22">Scale in Canada</div>
+        <p style="margin-top:8px" data-fdid="s3e23"><strong style="color:#fff">13,000+</strong> customers and <strong style="color:#fff">52,200+</strong> certified professionals nationwide.</p>
+      </div>
+      <div class="card dark" style="flex:1;border-left:4px solid var(--data)" data-fdid="s3e24">
+        <div class="tag" style="background:rgba(48,127,226,.18);color:#7fb2f0" data-fdid="s3e25">Major R&amp;D in Canada</div>
+        <p style="margin-top:8px" data-fdid="s3e26">FortiGuard Labs threat-research hub in Burnaby &amp; Ottawa — <strong style="color:#fff">1,000+ zero-days discovered.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 — THE FORK -->
+  <div class="slide">
+    <div class="kicker" data-fdid="s4e0">Section 1 · How We Engage</div>
+    <h2 data-fdid="s4e1">Meeting you where you are</h2>
+    <p class="lead mt-2" style="max-width:64ch" data-fdid="s4e2">Fortinet's capability is broad — many solutions across many technology stacks. So how we engage depends on the ask.</p>
+    <div class="row" style="margin-top:clamp(22px,3.5vh,40px);align-items:stretch" data-fdid="s4e3">
+      <div class="card build" style="flex:1;border-top:5px solid var(--dim)" data-fdid="s4e4">
+        <div class="tag" style="background:var(--card2);color:var(--muted)" data-fdid="s4e5">A narrow, specific ask</div>
+        <h3 class="mt-2" style="margin-top:12px" data-fdid="s4e6">Start there — or route to the right team</h3>
+        <p data-fdid="s4e7">If a customer arrives with a targeted need, we may begin right there, or bring in the team best suited to it — SecOps, for example.</p>
+      </div>
+      <div class="card build" style="flex:1.25;border-top:5px solid var(--accent)" data-fdid="s4e8">
+        <div class="tag" style="background:#fde8e6;color:var(--accent)" data-fdid="s4e9">No targeted ask → our cloud arc</div>
+        <h3 class="mt-2" style="margin-top:12px" data-fdid="s4e10">We follow the technologies we most commonly support</h3>
+        <p data-fdid="s4e11">As the <strong style="color:var(--ink)">Cloud team</strong>, when the entry point isn't defined we follow a repeatable narrative arc across the cloud technologies we see most often.</p>
+        <div class="row" style="margin-top:14px;gap:12px" data-fdid="s4e12">
+          <div class="chip" style="flex:1;justify-content:center;border-color:var(--data);color:var(--data)" data-fdid="s4e13">Data plane</div>
+          <div class="chip" style="flex:1;justify-content:center;border-color:var(--control);color:var(--control)" data-fdid="s4e14">Control plane</div>
+          <div class="chip" style="flex:1;justify-content:center;border-color:var(--saas);color:var(--saas)" data-fdid="s4e15">SaaS plane</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 — THE EVIDENCE -->
+  <div class="slide dark">
+    <div class="kicker" data-fdid="s5e0">Section 2 · The Evidence — keep this in mind</div>
+    <div class="row" style="align-items:center;gap:clamp(30px,5vw,70px);margin-top:clamp(8px,1.5vh,16px)" data-fdid="s5e1">
+      <div style="flex:1.1" data-fdid="s5e2">
+        <h2 style="max-width:16ch" data-fdid="s5e3">Hold this finding as we walk the solutions</h2>
+        <p class="lead build" style="margin-top:18px;max-width:42ch" data-fdid="s5e4">At the <strong style="color:#fff">AWS Summit Toronto</strong> we ran a maturity assessment across many customers. The finding surprised us — and it frames everything that follows.</p>
+        <ul class="clean build" style="margin-top:20px">
+          <li data-fdid="s5e5">The majority struggled most with <strong style="color:#fff">network security</strong></li>
+          <li data-fdid="s5e6">Consistent with where Canadian customers sit on the maturity curve</li>
+          <li data-fdid="s5e7">So networking is the right place to start — grounded in data, not opinion</li>
+        </ul>
+      </div>
+      <div class="build-bounce" style="flex:1.05;background:#fff;border-radius:16px;padding:clamp(10px,1.2vw,16px);box-shadow:0 16px 50px rgba(0,0,0,.32)" data-fdid="s5e8">
+        <img src="assets/pasted-1780685931570-0.png" alt="AWS Summit Toronto maturity assessment results" style="width:100%;height:auto;display:block;border-radius:6px" data-fdid="s5e9">
+        <div style="margin-top:8px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#5a6474;font-weight:700;text-align:center" data-fdid="s5e10">AWS Summit Toronto · maturity assessment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 — ACT I DIVIDER -->
+  <div class="slide dark">
+    <div class="kicker" data-fdid="s6e0">Act I — The Data Plane</div>
+    <h1 style="max-width:14ch" data-fdid="s6e1">Insertion</h1>
+    <div class="accent-line" data-fdid="s6e2"></div>
+    <p class="lead" style="max-width:40ch;margin-bottom:clamp(26px,4vh,44px)" data-fdid="s6e3">Steer and secure the traffic. Three products, three layers of abstraction — one shared insertion model.</p>
+    <div class="planestack" data-fdid="s6e4">
+      <div class="prow on n-data" data-fdid="s6e5"><div class="pdot" data-fdid="s6e6"></div><div class="ptxt" data-fdid="s6e7"><span class="pname" data-fdid="s6e8">Data plane</span><span class="psub" data-fdid="s6e9">Insertion</span></div></div>
+      <div class="prow n-control" data-fdid="s6e10"><div class="pdot" data-fdid="s6e11"></div><div class="ptxt" data-fdid="s6e12"><span class="pname" data-fdid="s6e13">Control plane</span><span class="psub" data-fdid="s6e14">Oversight</span></div></div>
+      <div class="prow n-saas" data-fdid="s6e15"><div class="pdot" data-fdid="s6e16"></div><div class="ptxt" data-fdid="s6e17"><span class="pname" data-fdid="s6e18">SaaS plane</span><span class="psub" data-fdid="s6e19">Consumption</span></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 — TRACK 1: FortiGate VM -->
+  <!-- SLIDE 8 — THE CONNECTIVITY-FIRST PROBLEM -->
+  <div class="slide">
+    <div class="kicker" data-fdid="s8e0">Track 1 · The Problem</div>
+    <h1 style="max-width:18ch" data-fdid="s8e1">The cloud was built for connectivity, not security</h1>
+    <div class="accent-line" data-fdid="s8e2"></div>
+    <p class="lead" style="max-width:48ch;margin-top:clamp(18px,3vh,28px)" data-fdid="s8e3">The entire value proposition of cloud is frictionless connection. Security was never the gravitational center — and you can see it in the defaults.</p>
+    
+    <div class="row build" style="margin-top:clamp(28px,5vh,48px);gap:clamp(20px,3vw,40px)" data-fdid="s8e4">
+      <div class="card" style="flex:1;background:rgba(48,127,226,0.08);border-left:4px solid var(--data)" data-fdid="s8e5">
+        <div class="tag" style="background:rgba(48,127,226,0.15);color:var(--data)" data-fdid="s8e6">Default path</div>
+        <h3 style="color:var(--dark);margin-top:12px;font-size:clamp(20px,2.2vw,28px)" data-fdid="s8e7">Make it work</h3>
+        <p style="margin-top:12px" data-fdid="s8e8">Open the port. Route the traffic. The connectivity path is the one that's easy to find and fast to deploy.</p>
+      </div>
+      
+      <div class="card" style="flex:1;background:rgba(231,76,60,0.08);border-left:4px solid var(--accent)" data-fdid="s8e9">
+        <div class="tag" style="background:rgba(231,76,60,0.15);color:var(--accent)" data-fdid="s8e10">Requires hunting</div>
+        <h3 style="color:var(--dark);margin-top:12px;font-size:clamp(20px,2.2vw,28px)" data-fdid="s8e11">Make it safe</h3>
+        <p style="margin-top:12px" data-fdid="s8e12">Enable the toggle. Configure inspection. Add bolt-ons. The secure path diverges — it's the one you have to go looking for.</p>
+      </div>
+    </div>
+    
+    <div class="spine" data-fdid="s8e17">
+      <div class="node n-data on" data-fdid="s8e18"><div class="lbl" data-fdid="s8e19">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s8e20"></div></div>
+      <div class="connector" data-fdid="s8e21"></div>
+      <div class="node n-control" data-fdid="s8e22"><div class="lbl" data-fdid="s8e23">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s8e24"></div></div>
+      <div class="connector" data-fdid="s8e25"></div>
+      <div class="node n-saas" data-fdid="s8e26"><div class="lbl" data-fdid="s8e27">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s8e28"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9 — AZURE'S RESPONSE: PREMIUM WITH GAPS -->
+  <div class="slide">
+    <div class="kicker" data-fdid="s8b0">Track 1 · The Origins</div>
+    <h2 style="max-width:24ch" data-fdid="s8b1">Cloud security started with one idea: block the packet at the door</h2>
+    <p class="lead" style="max-width:56ch;margin-top:clamp(14px,2.5vh,22px)" data-fdid="s8b2">When workloads first moved to the cloud, the security model came straight from the network layer — Security Groups and Network Security Groups (NSGs). The founding philosophy: if you control which packets get in, you've done your job.</p>
+
+    <div class="row build" style="margin-top:clamp(26px,4.5vh,44px);gap:clamp(20px,3vw,40px)" data-fdid="s8b3">
+      <div class="card" style="flex:1;background:rgba(48,127,226,0.08);border-left:4px solid var(--data)" data-fdid="s8b4">
+        <div class="tag" style="background:rgba(48,127,226,0.15);color:var(--data)" data-fdid="s8b5">Security Groups / NSGs</div>
+        <h3 style="color:var(--dark);margin-top:12px;font-size:clamp(18px,2vw,24px)" data-fdid="s8b6">A 5-tuple allow/deny list</h3>
+        <p style="margin-top:12px" data-fdid="s8b7">Source, destination, port, protocol, direction. Stateful filtering at the edge of every subnet and NIC — fast, cheap, and built into the fabric.</p>
+      </div>
+
+      <div class="card" style="flex:1;background:rgba(60,177,126,0.08);border-left:4px solid var(--saas)" data-fdid="s8b8">
+        <div class="tag" style="background:rgba(60,177,126,0.15);color:var(--saas)" data-fdid="s8b9">The founding philosophy</div>
+        <h3 style="color:var(--dark);margin-top:12px;font-size:clamp(18px,2vw,24px)" data-fdid="s8b10">"Blocking traffic is good enough"</h3>
+        <p style="margin-top:12px" data-fdid="s8b11">If the wrong packets never arrive, the thinking went, the workload is safe. Connectivity control was treated as a complete security model.</p>
+      </div>
+    </div>
+
+    <div class="build" style="margin-top:clamp(28px,4.5vh,48px);padding:clamp(20px,3vh,32px);background:rgba(218,41,28,0.12);border-left:4px solid var(--accent);border-radius:8px" data-fdid="s8b12">
+      <h3 style="color:var(--dark);font-size:clamp(18px,2vw,24px);margin-bottom:12px" data-fdid="s8b13">Blocking was only ever half the job</h3>
+      <p style="font-size:clamp(15px,1.6vw,20px);line-height:1.5" data-fdid="s8b14">A 5-tuple rule decides whether a packet gets in. It says <strong style="color:var(--dark)">nothing about what's inside the sessions you deliberately allow.</strong></p>
+      <p style="margin-top:14px;font-size:clamp(14px,1.5vw,18px);opacity:0.9" data-fdid="s8b15">Expose port 443 to deliver a web app, and an NSG gives you exactly zero inspection of what rides inside that permitted tunnel. <strong style="color:var(--dark)">The traffic you let in is the blind spot.</strong></p>
+    </div>
+
+    <div class="spine" data-fdid="s8b16">
+      <div class="node n-data on" data-fdid="s8b17"><div class="lbl" data-fdid="s8b18">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s8b19"></div></div>
+      <div class="connector" data-fdid="s8b20"></div>
+      <div class="node n-control" data-fdid="s8b21"><div class="lbl" data-fdid="s8b22">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s8b23"></div></div>
+      <div class="connector" data-fdid="s8b24"></div>
+      <div class="node n-saas" data-fdid="s8b25"><div class="lbl" data-fdid="s8b26">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s8b27"></div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="kicker" data-fdid="s9e0">Track 1 · Azure's Response</div>
+    <h2 data-fdid="s9e1">Azure Firewall Premium closed some gaps — but left others wide open</h2>
+    <p class="lead" style="max-width:52ch;margin-top:12px" data-fdid="s9e2">Years later, Azure shipped Premium with signature-based IDPS, TLS inspection, URL filtering, and web categories. Then draw the line.</p>
+    
+    <div class="grid build" style="grid-template-columns:1fr 1fr;gap:clamp(18px,2.5vw,32px);margin-top:clamp(24px,4vh,40px)" data-fdid="s9e3">
+      <div class="card" style="background:rgba(60,177,126,0.06);border-top:3px solid var(--saas)" data-fdid="s9e4">
+        <div class="tag" style="background:rgba(60,177,126,0.12);color:var(--saas)" data-fdid="s9e5">What Premium added</div>
+        <ul style="margin-top:14px;list-style:none;padding:0">
+          <li style="padding:8px 0;border-bottom:1px solid var(--line);font-size:clamp(13px,1.3vw,16px)" data-fdid="s9e6">✓ Signature-based IDPS</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--line);font-size:clamp(13px,1.3vw,16px)" data-fdid="s9e7">✗ <strong style="color:var(--accent);background:rgba(231,76,60,0.15);padding:2px 6px;border-radius:3px">Inbound</strong> TLS requires <a href="https://learn.microsoft.com/en-us/answers/questions/743560/how-will-tls-inpection-affect-the-idps" target="_blank" style="color:var(--accent);text-decoration:underline" data-fdid="s9e8">App Gateway</a></li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--line);font-size:clamp(13px,1.3vw,16px)" data-fdid="s9e9">✓ URL filtering</li>
+          <li style="padding:8px 0;font-size:clamp(13px,1.3vw,16px)" data-fdid="s9e10">✓ Web categories</li>
+        </ul>
+      </div>
+      
+      <div class="card" style="background:rgba(231,76,60,0.06);border-top:3px solid var(--accent)" data-fdid="s9e11">
+        <div class="tag" style="background:rgba(231,76,60,0.12);color:var(--accent)" data-fdid="s9e12">What Premium doesn't do</div>
+        <ul style="margin-top:14px;list-style:none;padding:0">
+          <li style="padding:8px 0;border-bottom:1px solid var(--line);font-size:clamp(13px,1.3vw,16px)" data-fdid="s9e13">✗ Pattern-matching only, not full NGFW</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--line);font-size:clamp(13px,1.3vw,16px)" data-fdid="s9e14">✗ Inbound TLS requires App Gateway</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--line);font-size:clamp(13px,1.3vw,16px)" data-fdid="s9e15">✗ Evasion defenses disabled by default</li>
+          <li style="padding:8px 0;font-size:clamp(13px,1.3vw,16px)" data-fdid="s9e16">✗ VPN, routing, SD-WAN are separate SKUs</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="spine" data-fdid="s9e21">
+      <div class="node n-data on" data-fdid="s9e22"><div class="lbl" data-fdid="s9e23">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s9e24"></div></div>
+      <div class="connector" data-fdid="s9e25"></div>
+      <div class="node n-control" data-fdid="s9e26"><div class="lbl" data-fdid="s9e27">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s9e28"></div></div>
+      <div class="connector" data-fdid="s9e29"></div>
+      <div class="node n-saas" data-fdid="s9e30"><div class="lbl" data-fdid="s9e31">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s9e32"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10 — THE RECEIPTS: CYBERRATINGS TEST -->
+  <div class="slide">
+    <div class="kicker" data-fdid="s10e0">Track 1 · The Evidence</div>
+    <h2 data-fdid="s10e1">The receipts: Independent testing</h2>
+    
+    <div class="grid build" style="grid-template-columns:1fr 1fr 1fr;gap:clamp(16px,2.2vw,28px);margin-top:clamp(24px,4vh,40px);transform:scale(0.8125);transform-origin:top center" data-fdid="s10e3">
+      <div class="card" style="background:rgba(231,76,60,0.06);border-top:4px solid #dc2626;text-align:center" data-fdid="s10e4">
+        <div style="font-size:clamp(11px,1vw,13px);font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px" data-fdid="s10e5">AWS Network Firewall</div>
+        <div class="big" style="font-size:clamp(64px,9vw,96px);color:#dc2626;line-height:1;margin-bottom:8px" data-fdid="s10e6">0<span style="font-size:0.5em" data-fdid="s10e7">%</span></div>
+        <p style="font-size:clamp(12px,1.2vw,15px);opacity:0.85" data-fdid="s10e8">0.59% exploits blocked</p>
+        <p style="font-size:clamp(11px,1.1vw,13px);margin-top:8px;opacity:0.7" data-fdid="s10e9">Evasions walked through</p>
+      </div>
+      
+      <div class="card" style="background:rgba(231,76,60,0.06);border-top:4px solid #dc2626;text-align:center" data-fdid="s10e10">
+        <div style="font-size:clamp(11px,1vw,13px);font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px" data-fdid="s10e11">Azure Firewall Premium</div>
+        <div class="big" style="font-size:clamp(64px,9vw,96px);color:#dc2626;line-height:1;margin-bottom:8px" data-fdid="s10e12">0<span style="font-size:0.5em" data-fdid="s10e13">%</span></div>
+        <p style="font-size:clamp(12px,1.2vw,15px);opacity:0.85" data-fdid="s10e14">55% exploits, 78% evasions</p>
+        <p style="font-size:clamp(11px,1.1vw,13px);margin-top:8px;opacity:0.7" data-fdid="s10e15">No built-in HTTPS decryption</p>
+      </div>
+      
+      <div class="card" style="background:rgba(60,177,126,0.06);border-top:4px solid var(--saas);text-align:center" data-fdid="s10e16">
+        <div style="font-size:clamp(11px,1vw,13px);font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--saas);margin-bottom:12px" data-fdid="s10e17">Fortinet FortiGate</div>
+        <div class="big" style="font-size:clamp(64px,9vw,96px);color:var(--saas);line-height:1;margin-bottom:8px" data-fdid="s10e18">100<span style="font-size:0.5em" data-fdid="s10e19">%</span></div>
+        <p style="font-size:clamp(12px,1.2vw,15px);opacity:0.85" data-fdid="s10e20">Perfect score</p>
+        <p style="font-size:clamp(11px,1.1vw,13px);margin-top:8px;opacity:0.7" data-fdid="s10e21">All exploits & evasions blocked</p>
+      </div>
+    </div>
+    
+    <!-- CyberRatings Report + Two Text Cards Side by Side -->
+    <div class="build" style="margin-top:clamp(12px,2vh,20px);display:flex;gap:clamp(12px,1.5vw,20px);align-items:flex-start;justify-content:center;max-width:80%;margin-left:auto;margin-right:auto" data-fdid="s10e22">
+      <div style="flex:1.15" data-fdid="s10e24">
+        <h3 style="font-size:clamp(13px,1.2vw,16px);margin-bottom:clamp(10px,1.5vh,14px);color:var(--muted);text-align:center" data-fdid="s10e23">Source: CyberRatings Report Q1 2025 (click to zoom)</h3>
+        <div class="zoomable" style="border:2px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card);cursor:pointer;transform:scale(0.625);transform-origin:top center" data-fdid="s9e24">
+          <img src="assets/pasted-1781795391987-0.png" alt="CyberRatings Enterprise Firewall Security Report" style="width:100%;display:block" data-fdid="s10e25">
+        </div>
+      </div>
+      
+      <div style="flex:0.85;display:flex;flex-direction:column;gap:clamp(16px,2vh,24px);margin-top:42px;margin-left:-45px" data-fdid="s9e26">
+        <div style="padding:clamp(16px,2.2vh,24px) clamp(14px,2vw,22px);background:rgba(48,127,226,0.08);border-left:4px solid var(--data);border-radius:8px" data-fdid="s9e27">
+          <h3 style="color:var(--data);font-size:clamp(14px,1.5vw,18px);margin-bottom:8px" data-fdid="s9e28">CyberRatings Q1 2025 comparative test</h3>
+          <p style="font-size:clamp(12px,1.2vw,14px);line-height:1.5;color:var(--ink)" data-fdid="s9e29">Third-party NGFWs scored <strong style="color:var(--dark)">99.61–100% security effectiveness.</strong> The cloud-native firewalls scored <strong style="color:var(--dark)">zero.</strong></p>
+        </div>
+        
+        <div style="padding:clamp(16px,2.2vh,24px) clamp(14px,2vw,22px);background:rgba(218,41,28,0.08);border-left:4px solid var(--accent);border-radius:8px" data-fdid="s10e26">
+          <h3 style="color:var(--dark);font-size:clamp(14px,1.5vw,18px);margin-bottom:8px" data-fdid="s10e27">Azure's blind spot: encrypted traffic</h3>
+          <p style="font-size:clamp(12px,1.2vw,14px);line-height:1.5;color:var(--ink)" data-fdid="s10e28">Azure Firewall Premium is the <strong style="color:var(--dark)">only firewall in the test with no built-in HTTPS decryption.</strong> Encrypted traffic — which is the traffic you let in — is a blind spot.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="spine" data-fdid="s10e29">
+      <div class="node n-data on" data-fdid="s10e30"><div class="lbl" data-fdid="s10e31">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s10e32"></div></div>
+      <div class="connector" data-fdid="s10e33"></div>
+      <div class="node n-control" data-fdid="s10e34"><div class="lbl" data-fdid="s10e35">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s10e36"></div></div>
+      <div class="connector" data-fdid="s10e37"></div>
+      <div class="node n-saas" data-fdid="s10e38"><div class="lbl" data-fdid="s10e39">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s10e40"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 (MOVED) — FORTIGATE VM: THE SOLUTION -->
+  <div class="slide">
+    <div class="brandbar" data-fdid="s11e0"><img src="assets/FortiGate VM.svg" style="height:78px" alt data-fdid="s11e1"><span class="wordmark" data-fdid="s11e2">FortiGate VM</span></div>
+    <div class="kicker" style="margin-top:8px" data-fdid="s11e3">Track 1 · The Solution</div>
+    <h2 style="max-width:18ch" data-fdid="s11e4">The on-ramp — and a consolidation engine</h2>
+    <div class="grid" style="grid-template-columns:1fr 1fr 1fr;margin-top:clamp(20px,3.5vh,36px)" data-fdid="s11e5">
+      <div class="card build" data-fdid="s11e6">
+        <div class="tag" style="background:#e6f0fc;color:var(--data)" data-fdid="s11e7">On-ramp</div>
+        <h3 class="mt-2" style="margin-top:10px" data-fdid="s11e8">Easy to deploy</h3>
+        <p data-fdid="s11e9">A broad library of reference architectures &amp; templates on AWS and Google Cloud. Full landing-zone integration. Standing it up isn't the hard part.</p>
+      </div>
+      <div class="card build" data-fdid="s11e10">
+        <div class="tag" style="background:#fde8e6;color:var(--accent)" data-fdid="s11e11">Value · Security</div>
+        <h3 class="mt-2" style="margin-top:10px" data-fdid="s11e12">Deep protection</h3>
+        <p data-fdid="s11e13">IPS · application control · antivirus · microsegmentation.</p>
+      </div>
+      <div class="card build" data-fdid="s11e14">
+        <div class="tag" style="background:#e8f5ee;color:var(--saas)" data-fdid="s11e15">Value · Networking</div>
+        <h3 class="mt-2" style="margin-top:10px" data-fdid="s11e16">Networking, consolidated</h3>
+        <p data-fdid="s11e17">SD-WAN &amp; intelligent routing · site-to-site + point-to-site tunnels · dynamic routing.</p>
+      </div>
+    </div>
+    <p class="lead build" style="margin-top:clamp(18px,2.6vh,28px);max-width:60ch" data-fdid="s11e18">In cloud-native terms, each of those is usually a <em>separate</em> service. The FortiGate collapses them into <strong style="color:var(--ink)">one product</strong>.</p>
+    <div class="spine" data-fdid="s11e19">
+      <div class="node n-data on" data-fdid="s11e20"><div class="lbl" data-fdid="s11e21">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s11e22"></div></div>
+      <div class="connector" data-fdid="s11e23"></div>
+      <div class="node n-control" data-fdid="s11e24"><div class="lbl" data-fdid="s11e25">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s11e26"></div></div>
+      <div class="connector" data-fdid="s11e27"></div>
+      <div class="node n-saas" data-fdid="s11e28"><div class="lbl" data-fdid="s11e29">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s11e30"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11 — WHAT AN NGFW ACTUALLY DOES -->
+  <div class="slide dark">
+    <div class="kicker" data-fdid="s12e0">Track 1 · The Solution</div>
+    <h2 data-fdid="s12e1">What a next-gen firewall actually is</h2>
+    <p class="lead" style="max-width:54ch;margin-top:12px" data-fdid="s12e2">Azure's native firewall is single-purpose. Everything adjacent is a separate SKU, separate bill, separate operational model.</p>
+    
+    <div class="row build" style="margin-top:clamp(24px,4vh,40px);gap:clamp(20px,3vw,40px)" data-fdid="s12e3">
+      <div class="card dark" style="flex:1;background:rgba(231,76,60,0.08);border-left:4px solid var(--accent)" data-fdid="s12e4">
+        <h3 style="color:#fff;font-size:clamp(18px,2vw,24px);margin-bottom:16px" data-fdid="s12e5">Azure: Assembling line items</h3>
+        <div style="display:flex;flex-direction:column;gap:10px" data-fdid="s12e6">
+          <div style="padding:10px 12px;background:rgba(255,255,255,0.05);border-radius:6px;border-left:3px solid rgba(231,76,60,0.4)" data-fdid="s12e7">
+            <div style="font-size:clamp(13px,1.3vw,16px);font-weight:600;color:#fff" data-fdid="s12e8">Azure Firewall Premium</div>
+            <div style="font-size:clamp(11px,1.1vw,13px);margin-top:4px;opacity:0.8" data-fdid="s12e9">Firewall + partial inspection</div>
+          </div>
+          <div style="padding:10px 12px;background:rgba(255,255,255,0.05);border-radius:6px;border-left:3px solid rgba(231,76,60,0.4)" data-fdid="s12e10">
+            <div style="font-size:clamp(13px,1.3vw,16px);font-weight:600;color:#fff" data-fdid="s12e11">+ Azure VPN Gateway</div>
+            <div style="font-size:clamp(11px,1.1vw,13px);margin-top:4px;opacity:0.8" data-fdid="s12e12">Separate SKU for VPN termination</div>
+          </div>
+          <div style="padding:10px 12px;background:rgba(255,255,255,0.05);border-radius:6px;border-left:3px solid rgba(231,76,60,0.4)" data-fdid="s12e13">
+            <div style="font-size:clamp(13px,1.3vw,16px);font-weight:600;color:#fff" data-fdid="s12e14">+ Azure Route Server</div>
+            <div style="font-size:clamp(11px,1.1vw,13px);margin-top:4px;opacity:0.8" data-fdid="s12e15">Separate SKU for BGP/dynamic routing</div>
+          </div>
+          <div style="padding:10px 12px;background:rgba(255,255,255,0.05);border-radius:6px;border-left:3px solid rgba(231,76,60,0.4)" data-fdid="s12e16">
+            <div style="font-size:clamp(13px,1.3vw,16px);font-weight:600;color:#fff" data-fdid="s12e17">+ Application Gateway (for TLS)</div>
+            <div style="font-size:clamp(11px,1.1vw,13px);margin-top:4px;opacity:0.8" data-fdid="s12e18">Inbound HTTPS inspection requires bolt-on</div>
+          </div>
+        </div>
+        <p style="margin-top:14px;font-size:clamp(12px,1.2vw,14px);opacity:0.7" data-fdid="s12e19">Separate policies. Separate logs. Separate operational model.</p>
+      </div>
+      
+      <div class="card dark" style="flex:1;background:rgba(60,177,126,0.08);border-left:4px solid var(--saas)" data-fdid="s12e20">
+        <h3 style="color:#fff;font-size:clamp(18px,2vw,24px);margin-bottom:16px" data-fdid="s12e21">FortiGate VM: One platform</h3>
+        <div style="padding:16px 18px;background:rgba(60,177,126,0.12);border-radius:8px;border:2px solid rgba(60,177,126,0.3)" data-fdid="s12e22">
+          <div style="font-size:clamp(15px,1.6vw,19px);font-weight:700;color:#6ee7b7;margin-bottom:14px" data-fdid="s12e23">Everything in FortiOS:</div>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:clamp(13px,1.3vw,16px)" data-fdid="s12e24">✓ NGFW (IPS, anti-malware, web filtering)</li>
+            <li style="font-size:clamp(13px,1.3vw,16px)" data-fdid="s12e25">✓ IPsec & SSL VPN</li>
+            <li style="font-size:clamp(13px,1.3vw,16px)" data-fdid="s12e26">✓ SD-WAN</li>
+            <li style="font-size:clamp(13px,1.3vw,16px)" data-fdid="s12e27">✓ Dynamic routing (BGP, OSPF)</li>
+            <li style="font-size:clamp(13px,1.3vw,16px)" data-fdid="s12e28">✓ Full TLS inspection (inbound & outbound)</li>
+          </ul>
+        </div>
+        <p style="margin-top:14px;font-size:clamp(13px,1.3vw,16px);font-weight:600;color:#6ee7b7" data-fdid="s12e29">One box. One policy. One log. 100% effective.</p>
+        <p style="margin-top:8px;font-size:clamp(12px,1.2vw,14px);opacity:0.7" data-fdid="s12e30">Identical on-prem and in every cloud.</p>
+      </div>
+    </div>
+    
+    <div class="build" style="margin-top:clamp(28px,4.5vh,44px);padding:clamp(18px,2.8vh,28px);background:rgba(60,177,126,0.12);border-left:4px solid var(--saas);border-radius:8px" data-fdid="s12e31">
+      <p style="font-size:clamp(16px,1.7vw,21px);line-height:1.5;color:#fff;font-weight:500" data-fdid="s12e32">The traffic you let in is the whole point. Seeing inside it is the entire job of a real firewall — not an afterthought bolted onto a platform built for connectivity.</p>
+    </div>
+    
+    <div class="spine" data-fdid="s12e33">
+      <div class="node n-data on" data-fdid="s12e34"><div class="lbl" data-fdid="s12e35">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s12e36"></div></div>
+      <div class="connector" data-fdid="s12e37"></div>
+      <div class="node n-control" data-fdid="s12e38"><div class="lbl" data-fdid="s12e39">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s12e40"></div></div>
+      <div class="connector" data-fdid="s12e41"></div>
+      <div class="node n-saas" data-fdid="s12e42"><div class="lbl" data-fdid="s12e43">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s12e44"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12 — AZURE FIREWALL PREMIUM COSTS (formerly slide 8) -->
+  <div class="slide">
+    
+    <div class="kicker" style="margin-top:8px" data-fdid="s13e0">Track 1 · Azure Firewall Premium Costs</div>
+    <h2 style="max-width:32ch" data-fdid="s13e1">Azure Firewall Premium pricing</h2>
+    <p class="lead" style="max-width:60ch;margin-top:8px;margin-bottom:clamp(14px,2.5vh,22px)" data-fdid="s13e2">Cost scales with data processed — fixed deployment (730 hrs/mo) plus metered per-GB processing (Canada Central region).</p>
+    
+    <!-- Azure Firewall Premium Cost table -->
+    <div style="margin-top:clamp(12px,2vh,18px)" data-fdid="s13e3">
+      <table style="width:100%;border-collapse:collapse;font-size:clamp(11px,1vw,14px)">
+        <thead>
+          <tr style="border-bottom:2px solid var(--line)">
+            <th style="text-align:left;padding:8px 10px;font-weight:700;color:var(--muted);text-transform:uppercase;font-size:10px;letter-spacing:0.5px" data-fdid="s13e4">Data Processed / mo</th>
+            <th style="text-align:right;padding:8px 10px;font-weight:700;color:var(--muted);text-transform:uppercase;font-size:10px;letter-spacing:0.5px" data-fdid="s13e5">Avg Throughput</th>
+            <th style="text-align:right;padding:8px 10px;font-weight:700;color:var(--muted);text-transform:uppercase;font-size:10px;letter-spacing:0.5px" data-fdid="s13e6">Monthly Cost</th>
+            <th style="text-align:right;padding:8px 10px;font-weight:700;color:var(--accent);text-transform:uppercase;font-size:10px;letter-spacing:0.5px" data-fdid="s13e7">Annual Cost</th>
+          </tr>
+        </thead>
+        <tbody class="build">
+          <tr style="border-bottom:1px solid var(--line);background:rgba(231,76,60,0.03)">
+            <td style="padding:10px;font-weight:700;color:var(--ink)" data-fdid="s13e8">10 TB</td>
+            <td style="padding:10px;text-align:right;color:var(--muted)" data-fdid="s13e9">~30.4 Mbps</td>
+            <td style="padding:10px;text-align:right;font-weight:700" data-fdid="s13e10">$1,441</td>
+            <td style="padding:10px;text-align:right;font-weight:800;color:var(--accent)" data-fdid="s13e11">$17,296/yr</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line);background:rgba(231,76,60,0.05)">
+            <td style="padding:10px;font-weight:700;color:var(--ink)" data-fdid="s13e12">100 TB</td>
+            <td style="padding:10px;text-align:right;color:var(--muted)" data-fdid="s13e13">~304.4 Mbps</td>
+            <td style="padding:10px;text-align:right;font-weight:700" data-fdid="s13e14">$2,916</td>
+            <td style="padding:10px;text-align:right;font-weight:800;color:var(--accent)" data-fdid="s13e15">$34,991/yr</td>
+          </tr>
+          <tr style="border-bottom:2px solid var(--accent);background:rgba(231,76,60,0.08)">
+            <td style="padding:12px 10px;font-weight:800;color:var(--ink)" data-fdid="s13e45">1,000 TB</td>
+            <td style="padding:12px 10px;text-align:right;color:var(--muted)" data-fdid="s13e46">~3.04 Gbps</td>
+            <td style="padding:12px 10px;text-align:right;font-weight:800;font-size:clamp(12px,1.1vw,15px)" data-fdid="s13e47">$17,662</td>
+            <td style="padding:12px 10px;text-align:right;font-weight:900;color:var(--accent);font-size:clamp(14px,1.3vw,17px)" data-fdid="s13e48">$211,938/yr</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <p class="lead build" style="margin-top:clamp(14px,2.5vh,24px);max-width:68ch;font-size:clamp(12px,1.1vw,15px)" data-fdid="s13e16">Azure Firewall Premium includes threat intelligence, TLS inspection, IDPS, and URL filtering. Cost is dominated by per-GB data processing — at 1,000 TB/mo the processing fee is ~13× the fixed deployment charge.</p>
+    
+    <!-- Azure Pricing Calculator Screenshots with zoom -->
+    <div class="build" style="margin-top:clamp(16px,2.5vh,24px)" data-fdid="s13e17">
+      <h3 style="font-size:clamp(13px,1.2vw,16px);margin-bottom:clamp(10px,1.5vh,14px);color:var(--muted)" data-fdid="s13e18">Source: Azure Pricing Calculator (click to zoom)</h3>
+      <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:clamp(10px,1.2vw,14px)" data-fdid="s13e19">
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="s13e20">
+          <div style="padding:6px 8px;background:rgba(48,127,226,0.08);border-bottom:1px solid var(--line)" data-fdid="s13e21">
+            <div style="font-size:10px;font-weight:700;color:var(--data)" data-fdid="s13e22">100 Mbps</div>
+          </div>
+          <img src="assets/pasted-1781728905103-0.png" alt="Azure 100 Mbps pricing" style="width:100%;display:block" data-fdid="s13e23">
+        </div>
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="s13e24">
+          <div style="padding:6px 8px;background:rgba(144,99,205,0.08);border-bottom:1px solid var(--line)" data-fdid="s13e25">
+            <div style="font-size:10px;font-weight:700;color:var(--control)" data-fdid="s13e26">500 Mbps</div>
+          </div>
+          <img src="assets/pasted-1781879973800-0.png" alt="Azure 500 Mbps pricing" style="width:100%;display:block" data-fdid="s13e27">
+        </div>
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="s13e28">
+          <div style="padding:6px 8px;background:rgba(60,177,126,0.08);border-bottom:1px solid var(--line)" data-fdid="s13e29">
+            <div style="font-size:10px;font-weight:700;color:var(--saas)" data-fdid="s13e30">5 Gbps</div>
+          </div>
+          <img src="assets/pasted-1781728972682-0.png" alt="Azure 5 Gbps pricing" style="width:100%;display:block" data-fdid="s13e31">
+        </div>
+      </div>
+    </div>
+    
+    <p class="lead build" style="margin-top:clamp(14px,2.4vh,20px);max-width:68ch;font-size:clamp(11px,1vw,13px);opacity:0.85" data-fdid="s13e32">Notes: Pricing from Azure Pricing Calculator for Canada Central region. Total = fixed deployment (730 hrs/mo ≈ $1.75/hr) + data processing (≈ $0.0164/GB). Avg throughput is the sustained rate equivalent to the monthly volume spread over 730 hours. Egress and storage charges apply separately.</p>
+    
+    <div class="spine" data-fdid="s13e33">
+      <div class="node n-data on" data-fdid="s13e34"><div class="lbl" data-fdid="s13e35">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s13e36"></div></div>
+      <div class="connector" data-fdid="s13e37"></div>
+      <div class="node n-control" data-fdid="s13e38"><div class="lbl" data-fdid="s13e39">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s13e40"></div></div>
+      <div class="connector" data-fdid="s13e41"></div>
+      <div class="node n-saas" data-fdid="s13e42"><div class="lbl" data-fdid="s13e43">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s13e44"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12.5 — AWS NETWORK FIREWALL COSTS -->
+  <div class="slide">
+
+    <div class="kicker" style="margin-top:8px" data-fdid="saws0">Track 1 · AWS Network Firewall Costs</div>
+    <h2 style="max-width:32ch" data-fdid="saws1">AWS Network Firewall pricing</h2>
+    <p class="lead" style="max-width:60ch;margin-top:8px;margin-bottom:clamp(14px,2.5vh,22px)" data-fdid="saws2">Cost scales with data inspected — fixed endpoint usage across 2 AZs plus per-GB advanced inspection.</p>
+
+    <!-- AWS Network Firewall Cost table -->
+    <div style="margin-top:clamp(12px,2vh,18px)" data-fdid="saws3">
+      <table style="width:100%;border-collapse:collapse;font-size:clamp(11px,1vw,14px)">
+        <thead>
+          <tr style="border-bottom:2px solid var(--line)">
+            <th style="text-align:left;padding:8px 10px;font-weight:700;color:var(--muted);text-transform:uppercase;font-size:10px;letter-spacing:0.5px" data-fdid="saws4">Data Processed / mo</th>
+            <th style="text-align:right;padding:8px 10px;font-weight:700;color:var(--muted);text-transform:uppercase;font-size:10px;letter-spacing:0.5px" data-fdid="saws5">Avg Throughput</th>
+            <th style="text-align:right;padding:8px 10px;font-weight:700;color:var(--muted);text-transform:uppercase;font-size:10px;letter-spacing:0.5px" data-fdid="saws6">Monthly Cost</th>
+            <th style="text-align:right;padding:8px 10px;font-weight:700;color:var(--accent);text-transform:uppercase;font-size:10px;letter-spacing:0.5px" data-fdid="saws7">Annual Cost</th>
+          </tr>
+        </thead>
+        <tbody class="build">
+          <tr style="border-bottom:1px solid var(--line);background:rgba(231,76,60,0.03)">
+            <td style="padding:10px;font-weight:700;color:var(--ink)" data-fdid="saws8">10 TB</td>
+            <td style="padding:10px;text-align:right;color:var(--muted)" data-fdid="saws9">~30.4 Mbps</td>
+            <td style="padding:10px;text-align:right;font-weight:700" data-fdid="saws10">$2,278</td>
+            <td style="padding:10px;text-align:right;font-weight:800;color:var(--accent)" data-fdid="saws11">$27,334/yr</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line);background:rgba(231,76,60,0.05)">
+            <td style="padding:10px;font-weight:700;color:var(--ink)" data-fdid="saws12">100 TB</td>
+            <td style="padding:10px;text-align:right;color:var(--muted)" data-fdid="saws13">~304.4 Mbps</td>
+            <td style="padding:10px;text-align:right;font-weight:700" data-fdid="saws14">$8,268</td>
+            <td style="padding:10px;text-align:right;font-weight:800;color:var(--accent)" data-fdid="saws15">$99,219/yr</td>
+          </tr>
+          <tr style="border-bottom:2px solid var(--accent);background:rgba(231,76,60,0.08)">
+            <td style="padding:12px 10px;font-weight:800;color:var(--ink)" data-fdid="saws16">1,000 TB</td>
+            <td style="padding:12px 10px;text-align:right;color:var(--muted)" data-fdid="saws17">~3.04 Gbps</td>
+            <td style="padding:12px 10px;text-align:right;font-weight:800;font-size:clamp(12px,1.1vw,15px)" data-fdid="saws18">$68,172</td>
+            <td style="padding:12px 10px;text-align:right;font-weight:900;color:var(--accent);font-size:clamp(14px,1.3vw,17px)" data-fdid="saws19">$818,067/yr</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="lead build" style="margin-top:clamp(14px,2.5vh,24px);max-width:68ch;font-size:clamp(12px,1.1vw,15px)" data-fdid="saws20">AWS Network Firewall bills per firewall endpoint per AZ plus a per-GB inspection fee. With advanced inspection (TLS/IDPS) enabled across 2 AZs, inspection fees dominate — at 1,000 TB/mo they are ~41× the fixed endpoint charge.</p>
+
+    <p class="lead build" style="margin-top:clamp(14px,2.4vh,20px);max-width:68ch;font-size:clamp(11px,1vw,13px);opacity:0.85" data-fdid="saws21">Notes: Two-AZ deployment (2 firewall endpoints). Total = fixed endpoint/network usage ($1,612.22/mo) + advanced inspection (≈ $0.0666/GB). Avg throughput is the sustained rate equivalent to the monthly volume spread over 730 hours. Data transfer and rule-group charges may apply separately.</p>
+
+    <div class="spine" data-fdid="saws22">
+      <div class="node n-data on" data-fdid="saws23"><div class="lbl" data-fdid="saws24">Data plane<small>Insertion</small></div><div class="dot" data-fdid="saws25"></div></div>
+      <div class="connector" data-fdid="saws26"></div>
+      <div class="node n-control" data-fdid="saws27"><div class="lbl" data-fdid="saws28">Control plane<small>Oversight</small></div><div class="dot" data-fdid="saws29"></div></div>
+      <div class="connector" data-fdid="saws30"></div>
+      <div class="node n-saas" data-fdid="saws31"><div class="lbl" data-fdid="saws32">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="saws33"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8.5 — FORTIGATE-VM PERFORMANCE SPECIFICATIONS -->
+  <div class="slide">
+    <div class="kicker" style="margin-top:8px" data-fdid="s14e3">Track 1 · FortiGate VM Solution Costs</div>
+    <h2 style="max-width:32ch" data-fdid="s14e4">FortiGate VM: Complete TCO</h2>
+    <p class="lead" style="max-width:60ch;margin-top:8px;margin-bottom:clamp(10px,1.8vh,16px)" data-fdid="s14e5">Licensing + Azure compute (3-year reserved, Canada Central).</p>
+    
+    <!-- FortiGate VM Cost table -->
+    <div style="margin-top:clamp(24px,3.5vh,40px)" data-fdid="s14e6">
+      <table style="width:100%;border-collapse:collapse;font-size:clamp(10px,0.95vw,13px)">
+        <thead>
+          <tr style="border-bottom:2px solid var(--line)">
+            <th style="text-align:left;padding:6px 8px;font-weight:700;color:var(--muted);text-transform:uppercase;font-size:9px;letter-spacing:0.5px" data-fdid="s14e7">Component</th>
+            <th style="text-align:right;padding:6px 8px;font-weight:700;color:var(--data);font-size:10px" data-fdid="s14e8">VM02</th>
+            <th style="text-align:right;padding:6px 8px;font-weight:700;color:var(--saas);font-size:10px" data-fdid="s14e9">VM16</th>
+          </tr>
+        </thead>
+        <tbody class="build">
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:7px 8px;font-weight:600;color:var(--ink);font-size:clamp(10px,0.92vw,12px)" data-fdid="s14e10">Throughput</td>
+            <td style="padding:7px 8px;text-align:right" data-fdid="s14e11">100-500 Mbps</td>
+            <td style="padding:7px 8px;text-align:right" data-fdid="s14e12">Up to 5 Gbps</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:7px 8px;font-weight:600;color:var(--ink);font-size:clamp(10px,0.92vw,12px)" data-fdid="s14e13">FortiGate License (2x HA)</td>
+            <td style="padding:7px 8px;text-align:right;font-weight:600" data-fdid="s14e14">$4,898/yr</td>
+            <td style="padding:7px 8px;text-align:right;font-weight:600" data-fdid="s14e15">$41,900/yr</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:7px 8px;font-weight:600;color:var(--ink);font-size:clamp(10px,0.92vw,12px)" data-fdid="s14e16">Azure Compute (2x D2s_v5 / D16s_v5)</td>
+            <td style="padding:7px 8px;text-align:right;font-weight:600" data-fdid="s14e17">$1,871/yr</td>
+            <td style="padding:7px 8px;text-align:right;font-weight:600" data-fdid="s14e18">$13,841/yr</td>
+          </tr>
+          <tr style="border-bottom:2px solid var(--accent);background:rgba(218,41,28,0.05)">
+            <td style="padding:8px;font-weight:800;color:var(--accent);font-size:clamp(11px,1vw,14px)" data-fdid="s14e19">FortiGate VM Total</td>
+            <td style="padding:8px;text-align:right;font-weight:900;color:var(--accent);font-size:clamp(12px,1.1vw,15px)" data-fdid="s14e20">$6,769/yr</td>
+            <td style="padding:8px;text-align:right;font-weight:900;color:var(--accent);font-size:clamp(12px,1.1vw,15px)" data-fdid="s14e21">$55,741/yr</td>
+          </tr>
+        </tbody>
+        <tbody class="build">
+          <tr style="background:rgba(60,177,126,0.08)">
+            <td style="padding:10px 8px;font-weight:700;color:var(--saas);font-size:clamp(11px,1vw,14px)" data-fdid="s14e22">vs. Azure Firewall Premium</td>
+            <td style="padding:10px 8px;text-align:right;font-weight:800;color:var(--saas);font-size:clamp(11px,1.05vw,14px)" data-fdid="s14e23">69-86% savings</td>
+            <td style="padding:10px 8px;text-align:right;font-weight:800;color:var(--saas);font-size:clamp(11px,1.05vw,14px)" data-fdid="s14e24">~74% savings</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Three-column grid: Datasheet + 2 VM pricing screenshots -->
+    <div class="build" style="margin-top:clamp(28px,4vh,44px)" data-fdid="s14e25">
+      <h3 style="font-size:clamp(12px,1.1vw,15px);margin-bottom:clamp(8px,1.2vh,12px);color:var(--muted)" data-fdid="s14e26">Source: FortiGate Performance Matrix & Azure Pricing Calculator (click to zoom)</h3>
+      <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:clamp(10px,1.2vw,14px);transform:scale(0.9);transform-origin:top center" data-fdid="s14e27">
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="s14e28">
+          <div style="padding:6px 8px;background:var(--card2);border-bottom:1px solid var(--line)" data-fdid="s14e29">
+            <div style="font-size:10px;font-weight:700;color:var(--ink)" data-fdid="s14e30">Performance Matrix</div>
+          </div>
+          <img src="assets/pasted-1781729393370-0.png" alt="FortiGate-VM Azure Performance Datasheet" style="width:100%;display:block" data-fdid="s14e31">
+        </div>
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="s14e32">
+          <div style="padding:6px 8px;background:rgba(48,127,226,0.08);border-bottom:1px solid var(--line)" data-fdid="s14e33">
+            <div style="font-size:10px;font-weight:700;color:var(--data)" data-fdid="s14e34">D2s_v5 (VM02)</div>
+          </div>
+          <img src="assets/pasted-1781792573983-0.png" alt="Azure D2s_v5 pricing" style="width:100%;display:block" data-fdid="s14e35">
+        </div>
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="s14e36">
+          <div style="padding:6px 8px;background:rgba(60,177,126,0.08);border-bottom:1px solid var(--line)" data-fdid="s14e37">
+            <div style="font-size:10px;font-weight:700;color:var(--saas)" data-fdid="s14e38">D4s_v5 (VM04)</div>
+          </div>
+          <img src="assets/pasted-1781792641301-0.png" alt="Azure D4s_v5 pricing" style="width:100%;display:block" data-fdid="s14e39">
+        </div>
+      </div>
+    </div>
+    
+    <div class="spine" data-fdid="s14e41">
+      <div class="node n-data on" data-fdid="s14e42"><div class="lbl" data-fdid="s14e43">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s14e44"></div></div>
+      <div class="connector" data-fdid="s14e45"></div>
+      <div class="node n-control" data-fdid="s14e46"><div class="lbl" data-fdid="s14e47">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s14e48"></div></div>
+      <div class="connector" data-fdid="s14e49"></div>
+      <div class="node n-saas" data-fdid="s14e50"><div class="lbl" data-fdid="s14e51">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s14e52"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9 — TRACK 1: TWO CONSOLIDATION STORIES -->
+  <div class="slide dark">
+    <div class="kicker" data-fdid="s15e0">Track 1 · Why it's a partner growth engine</div>
+    <h2 data-fdid="s15e1">Two consolidation stories</h2>
+    <div class="row" style="margin-top:clamp(22px,4vh,40px);gap:clamp(18px,2.4vw,32px)" data-fdid="s15e2">
+      <div class="card dark build" style="flex:1;border-left:4px solid var(--data)" data-fdid="s15e3">
+        <div class="big" style="font-size:clamp(34px,4vw,52px);color:var(--data)" data-fdid="s15e4">01</div>
+        <h3 style="color:#fff;margin-top:8px" data-fdid="s15e5">Network use cases</h3>
+        <p data-fdid="s15e6">One firewall replaces a sprawl of separate cloud-native services. The cloud is "Swiss cheese" — ingress and egress everywhere. Consolidating entry points <strong style="color:#fff">creates a real edge again.</strong></p>
+      </div>
+      <div class="card dark build" style="flex:1;border-left:4px solid var(--teal)" data-fdid="s15e7">
+        <div class="big" style="font-size:clamp(34px,4vw,52px);color:var(--teal)" data-fdid="s15e8">02</div>
+        <h3 style="color:#fff;margin-top:8px" data-fdid="s15e9">The IT stack</h3>
+        <p data-fdid="s15e10">Standardize one security solution across multi-cloud. Existing FortiGate / FortiManager customers <strong style="color:#fff">reuse their consoles and logging</strong> as they extend into cloud. Same tooling, no retraining.</p>
+      </div>
+    </div>
+        <div class="spine" data-fdid="s15e11">
+      <div class="node n-data on" data-fdid="s15e12"><div class="lbl" data-fdid="s15e13">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s15e14"></div></div>
+      <div class="connector" data-fdid="s15e15"></div>
+      <div class="node n-control" data-fdid="s15e16"><div class="lbl" data-fdid="s15e17">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s15e18"></div></div>
+      <div class="connector" data-fdid="s15e19"></div>
+      <div class="node n-saas" data-fdid="s15e20"><div class="lbl" data-fdid="s15e21">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s15e22"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 — TRACK 2: FortiWeb / WAF -->
+  <div class="slide">
+    <div class="brandbar" data-fdid="s16e0"><img src="assets/FortiWeb.svg" style="height:78px" alt data-fdid="s16e1"><span class="wordmark" data-fdid="s16e2">FortiWeb</span></div>
+    <div class="kicker" style="margin-top:8px" data-fdid="s16e3">Track 2 · Application Security</div>
+    <h2 style="max-width:24ch" data-fdid="s16e4">ML-optimized security for your business applications</h2>
+    <p class="lead" style="max-width:70ch;margin-top:10px" data-fdid="s16e5">Same insertion model as the FortiGate — route manipulation (static / dynamic UDRs) or public-IP association. The focus narrows to <strong style="color:var(--ink)">HTTP / HTTPS</strong>, purpose-built for apps and APIs.</p>
+    <div class="grid build" style="grid-template-columns:repeat(4,1fr);margin-top:clamp(18px,3vh,30px)" data-fdid="s16e6">
+      <div class="card" style="border-top:4px solid var(--data)" data-fdid="s16e7">
+        <div class="tag" style="background:#e6f0fc;color:var(--data)" data-fdid="s16e8">OWASP Top 10</div>
+        <h3 class="mt-2" style="margin-top:10px;font-size:19px" data-fdid="s16e9">Core app security</h3>
+        <p data-fdid="s16e10">Protection centered on the OWASP Top 10 — and addressing the regulatory compliance demands of public-facing web apps.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--accent)" data-fdid="s16e11">
+        <div class="tag" style="background:#fde8e6;color:var(--accent)" data-fdid="s16e12">Bot defense</div>
+        <h3 class="mt-2" style="margin-top:10px;font-size:19px" data-fdid="s16e13">Advanced ML bot detection</h3>
+        <p data-fdid="s16e14">Don't just block bots — <strong style="color:var(--ink)">allow legitimate bots</strong> to operate while blocking the malicious ones.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--saas)" data-fdid="s16e15">
+        <div class="tag" style="background:#e8f5ee;color:var(--saas)" data-fdid="s16e16">API protection</div>
+        <h3 class="mt-2" style="margin-top:10px;font-size:19px" data-fdid="s16e17">ML-secured APIs</h3>
+        <p data-fdid="s16e18">ML-driven protection for internet-facing APIs that support critical lines of business. The schema validation stops malformed or malicious input and enumeration-style probing by constraining what reaches the backend, and <strong style="color:var(--ink)">prevents data leakage in API responses</strong>.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--control)" data-fdid="s16e19">
+        <div class="tag" style="background:#efe7f9;color:var(--control)" data-fdid="s16e20">Behavioral</div>
+        <h3 class="mt-2" style="margin-top:10px;font-size:19px" data-fdid="s16e21">Trained by FortiGuard, tuned by you</h3>
+        <p data-fdid="s16e22">The models are trained by <strong style="color:var(--ink)">FortiGuard Labs</strong> and bolstered by <strong style="color:var(--ink)">your own application data</strong> — which continuously evolves, so protection adapts with your apps.</p>
+      </div>
+    </div>
+    <div class="spine" data-fdid="s16e23">
+      <div class="node n-data on" data-fdid="s16e24"><div class="lbl" data-fdid="s16e25">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s16e26"></div></div>
+      <div class="connector" data-fdid="s16e27"></div>
+      <div class="node n-control" data-fdid="s16e28"><div class="lbl" data-fdid="s16e29">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s16e30"></div></div>
+      <div class="connector" data-fdid="s16e31"></div>
+      <div class="node n-saas" data-fdid="s16e32"><div class="lbl" data-fdid="s16e33">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s16e34"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9b — TRACK 2: MCP SECURITY -->
+  <div class="slide">
+    <div class="brandbar" data-fdid="s17e0"><img src="assets/FortiWeb.svg" style="height:78px" alt data-fdid="s17e1"><span class="wordmark" data-fdid="s17e2">FortiWeb</span></div>
+    <div class="kicker" style="margin-top:8px" data-fdid="s17e3">Track 2 · Securing the AI tool layer (MCP)</div>
+    <h2 style="max-width:24ch" data-fdid="s17e4">A reverse proxy for the Model Context Protocol</h2>
+    <p class="lead" style="max-width:74ch;margin-top:10px" data-fdid="s17e5">As AI agents call tools, databases, and services over MCP, FortiWeb sits between the <strong style="color:var(--ink)">MCP client</strong> and <strong style="color:var(--ink)">MCP server</strong> — natively parsing Streamable HTTP / Server-Sent Events and validating each JSON-RPC message <em>as it streams</em>.</p>
+    <div class="row" style="margin-top:clamp(14px,2.4vh,24px);align-items:center;justify-content:center;gap:0" data-fdid="s17e6">
+      <div style="flex:0 0 auto;text-align:center" data-fdid="s17e7">
+        <div style="width:clamp(96px,11vw,150px);padding:clamp(12px,1.4vw,18px) 8px;background:var(--card2);border:1px solid var(--line);border-radius:12px" data-fdid="s17e8">
+          <div style="font-size:26px" data-fdid="s17e9">🤖</div>
+          <div style="font-weight:700;font-size:14px;margin-top:4px" data-fdid="s17e10">MCP Client</div>
+          <div style="font-size:11px;color:var(--muted)" data-fdid="s17e11">AI app / agent</div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:60px;display:flex;flex-direction:column;align-items:center;padding:0 4px" data-fdid="s17e12">
+        <div style="font-size:11px;font-weight:700;color:var(--data)" data-fdid="s17e13">upstream →</div>
+        <div style="width:100%;height:2px;background:linear-gradient(90deg,var(--data),var(--accent));margin:5px 0" data-fdid="s17e14"></div>
+        <div style="font-size:11px;font-weight:700;color:var(--accent)" data-fdid="s17e15">← downstream</div>
+      </div>
+      <div style="flex:0 0 auto;text-align:center" data-fdid="s17e16">
+        <div style="width:clamp(120px,14vw,184px);padding:clamp(12px,1.4vw,18px) 10px;background:#fff;border:2px solid var(--accent);border-radius:12px;box-shadow:0 10px 30px rgba(218,41,28,.18)" data-fdid="s17e17">
+          <img src="assets/FortiWeb.svg" style="height:34px" alt data-fdid="s17e18">
+          <div style="font-weight:800;font-size:14px;margin-top:4px" data-fdid="s17e19">FortiWeb</div>
+          <div style="font-size:11px;color:var(--accent);font-weight:700" data-fdid="s17e20">Reverse proxy · inspect &amp; validate</div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:60px;display:flex;flex-direction:column;align-items:center;padding:0 4px" data-fdid="s17e21">
+        <div style="font-size:11px;font-weight:700;color:var(--data)" data-fdid="s17e22">→ tool calls</div>
+        <div style="width:100%;height:2px;background:linear-gradient(90deg,var(--accent),var(--control));margin:5px 0" data-fdid="s17e23"></div>
+        <div style="font-size:11px;font-weight:700;color:var(--control)" data-fdid="s17e24">responses ←</div>
+      </div>
+      <div style="flex:0 0 auto;text-align:center" data-fdid="s17e25">
+        <div style="width:clamp(96px,11vw,150px);padding:clamp(12px,1.4vw,18px) 8px;background:var(--card2);border:1px solid var(--line);border-radius:12px" data-fdid="s17e26">
+          <div style="font-size:26px" data-fdid="s17e27">🛠️</div>
+          <div style="font-weight:700;font-size:14px;margin-top:4px" data-fdid="s17e28">MCP Server</div>
+          <div style="font-size:11px;color:var(--muted)" data-fdid="s17e29">tools / data sources</div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top:clamp(14px,2.4vh,24px);gap:clamp(16px,2vw,26px);align-items:stretch" data-fdid="s17e30">
+      <div class="card build" style="flex:1;border-top:4px solid var(--data)" data-fdid="s17e31">
+        <h3 style="font-size:19px" data-fdid="s17e32">Upstream · client → server</h3>
+        <p data-fdid="s17e33">Inspects tool calls and arguments to stop injection attacks — SQL, command execution, unauthorized shell references — hidden in tool parameters.</p>
+      </div>
+      <div class="card build" style="flex:1;border-top:4px solid var(--accent)" data-fdid="s17e34">
+        <h3 style="font-size:19px" data-fdid="s17e35">Downstream · server → client</h3>
+        <p data-fdid="s17e36">Monitors tool descriptions and returned prompt content to block <strong style="color:var(--ink)">poisoning</strong> and jailbreak attempts that manipulate LLM behavior.</p>
+      </div>
+      <div class="card build" style="flex:1;border-top:4px solid var(--control)" data-fdid="s17e37">
+        <h3 style="font-size:19px" data-fdid="s17e38">Schema validation</h3>
+        <p data-fdid="s17e39">Validates every streamed message against official MCP schemas from <strong style="color:var(--ink)">FortiGuard</strong> — catching malformed payloads even in partial fragments.</p>
+      </div>
+    </div>
+    <p class="lead build" style="margin-top:clamp(14px,2.2vh,22px);max-width:72ch" data-fdid="s17e40">Placed in the <strong style="color:var(--ink)">Protocol Constraints</strong> layer — the channel's integrity is verified before traffic ever reaches the deeper WAF and DLP engines.</p>
+    <div class="spine" data-fdid="s17e41">
+      <div class="node n-data on" data-fdid="s17e42"><div class="lbl" data-fdid="s17e43">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s17e44"></div></div>
+      <div class="connector" data-fdid="s17e45"></div>
+      <div class="node n-control" data-fdid="s17e46"><div class="lbl" data-fdid="s17e47">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s17e48"></div></div>
+      <div class="connector" data-fdid="s17e49"></div>
+      <div class="node n-saas" data-fdid="s17e50"><div class="lbl" data-fdid="s17e51">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s17e52"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10 — TRACK 3: FortiAI-Gate -->
+  <div class="slide">
+    <div class="brandbar" data-fdid="s18e0"><img src="assets/FortiAIGate.svg" style="height:78px" alt data-fdid="s18e1"><span class="wordmark" data-fdid="s18e2">FortiAIGate</span></div>
+    <div class="kicker" style="margin-top:8px" data-fdid="s18e3">Track 3 · AI / Agent Security</div>
+    <h2 style="max-width:20ch" data-fdid="s18e4">The newest surface — attacks in natural language</h2>
+    <div class="row" style="margin-top:clamp(16px,2.8vh,30px);gap:clamp(24px,3.5vw,52px);align-items:center" data-fdid="s18e5">
+      <div style="flex:1" data-fdid="s18e6">
+        <p class="lead" data-fdid="s18e7">An explicit proxy / LLM gateway. <strong style="color:var(--ink)">Same in-line insertion pattern</strong> as the firewall and WAF — pointed at a brand-new attack surface.</p>
+        <p class="lead" style="margin-top:14px" data-fdid="s18e8">The payload is still structured JSON, but the threat lives in the <strong style="color:var(--ink)">natural-language content</strong> inside it. WAFs and API gateways inspect syntax, not intent — so this calls for an <strong style="color:var(--ink)">explicit proxy for LLMs.</strong></p>
+        <div class="row" style="margin-top:18px;gap:12px" data-fdid="s18e9">
+          <div class="chip" style="flex:1;justify-content:center" data-fdid="s18e10">OWASP Top 10 for LLMs</div>
+          <div class="chip" style="flex:1;justify-content:center" data-fdid="s18e11">MCP Top 10</div>
+        </div>
+      </div>
+      <div style="flex:1.1" data-fdid="s18e12">
+        <div style="background:#fff;border-radius:14px;padding:clamp(8px,1vw,12px);box-shadow:0 14px 44px rgba(20,32,43,.12);border:1px solid var(--line)" data-fdid="s18e13">
+          <img src="assets/pasted-1780931792021-0.png" alt="FortiAIGate explicit proxy between application and LLM" style="width:100%;height:auto;display:block;border-radius:8px" data-fdid="s18e14">
+        </div>
+      </div>
+    </div>
+    <div class="spine" data-fdid="s18e15">
+      <div class="node n-data on" data-fdid="s18e16"><div class="lbl" data-fdid="s18e17">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s18e18"></div></div>
+      <div class="connector" data-fdid="s18e19"></div>
+      <div class="node n-control" data-fdid="s18e20"><div class="lbl" data-fdid="s18e21">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s18e22"></div></div>
+      <div class="connector" data-fdid="s18e23"></div>
+      <div class="node n-saas" data-fdid="s18e24"><div class="lbl" data-fdid="s18e25">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s18e26"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10b — TRACK 3: FortiAIGate KEY CAPABILITIES -->
+  <div class="slide">
+    <div class="brandbar" style="display:flex;align-items:center;gap:12px" data-fdid="s19e0">
+      <img src="assets/FortiAIGate.svg" style="height:78px" alt data-fdid="s19e1">
+      <div style="display:flex;flex-direction:column;gap:2px" data-fdid="s19e2">
+        <span class="wordmark" style="font-size:38px;line-height:1" data-fdid="s19e3">FortiAIGate</span>
+        <span style="font-size:14px;color:rgba(20,32,43,0.6);letter-spacing:0.5px" data-fdid="s19e4">OPEN WORLDWIDE APPLICATION SECURITY PROJECT</span>
+      </div>
+    </div>
+    <div class="kicker" style="margin-top:8px" data-fdid="s19e5">Track 3 · The Framework</div>
+    <h2 style="max-width:32ch" data-fdid="s19e6">OWASP Top 10 for LLMs</h2>
+    <p class="lead" style="max-width:85ch;margin-top:10px" data-fdid="s19e7">Before we walk through the risks, the framework we'll measure them against — the shared language security teams, vendors, and auditors have standardized on.</p>
+    
+    <div class="row" style="margin-top:clamp(16px,2.5vh,26px);gap:clamp(20px,2.5vw,40px)" data-fdid="s19e8">
+      <div style="flex:1" data-fdid="s19e9">
+        <div class="card" style="background:rgba(255,255,255,0.06);border-left:4px solid var(--accent);height:100%" data-fdid="s19e10">
+          <h3 style="font-size:17px;margin-bottom:8px;color:var(--accent)" data-fdid="s19e11">WHAT IT IS</h3>
+          <p style="font-size:15px;line-height:1.5" data-fdid="s19e12">A community-built, vendor-neutral catalogue of the ten most critical security risks in LLM and agent applications — maintained by OWASP, the same body behind the web AppSec Top 10.</p>
+        </div>
+      </div>
+      <div style="flex:1" data-fdid="s19e13">
+        <div class="card" style="background:rgba(255,255,255,0.06);border-left:4px solid var(--data);height:100%" data-fdid="s19e14">
+          <h3 style="font-size:17px;margin-bottom:8px;color:var(--data)" data-fdid="s19e15">WHY IT EXISTS</h3>
+          <p style="font-size:15px;line-height:1.5" data-fdid="s19e16">Traditional AppSec frameworks never accounted for prompts, model outputs, or autonomous tool use. Teams adopting AI had no shared way to name or compare these risks. This closed that gap.</p>
+        </div>
+      </div>
+      <div style="flex:1" data-fdid="s19e17">
+        <div class="card" style="background:rgba(255,255,255,0.06);border-left:4px solid var(--saas);height:100%" data-fdid="s19e18">
+          <h3 style="font-size:17px;margin-bottom:8px;color:var(--saas)" data-fdid="s19e19">WHY IT'S THE BENCHMARK</h3>
+          <p style="font-size:15px;line-height:1.5" data-fdid="s19e20">It's vendor-neutral and CISO-recognized — now the common reference in RFPs, audits, and architecture reviews. If you secure AI, this is the language you're expected to speak.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid build" style="grid-template-columns:repeat(5,1fr);margin-top:clamp(16px,2.5vh,26px);gap:clamp(10px,1.2vw,16px)" data-fdid="s19e21">
+      <div class="card" style="padding:12px 14px;background:rgba(231,76,60,0.1);border-top:3px solid var(--accent)" data-fdid="s19e22">
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:4px" data-fdid="s19e23">LLM01</div>
+        <h4 style="font-size:13.5px;font-weight:600;margin-bottom:4px" data-fdid="s19e24">Prompt Injection</h4>
+        <p style="font-size:12px;line-height:1.4;opacity:0.85" data-fdid="s19e25">Adversarial input overrides instructions, incl. indirect injection via documents & data.</p>
+      </div>
+      
+      <div class="card" style="padding:12px 14px;background:rgba(231,76,60,0.1);border-top:3px solid var(--accent)" data-fdid="s19e26">
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:4px" data-fdid="s19e27">LLM02</div>
+        <h4 style="font-size:13.5px;font-weight:600;margin-bottom:4px" data-fdid="s19e28">Insecure Output Handling</h4>
+        <p style="font-size:12px;line-height:1.4;opacity:0.85" data-fdid="s19e29">Downstream systems trust unvalidated model output.</p>
+      </div>
+      
+      <div class="card" style="padding:12px 14px;background:rgba(231,76,60,0.1);border-top:3px solid var(--accent)" data-fdid="s19e30">
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:4px" data-fdid="s19e31">LLM03</div>
+        <h4 style="font-size:13.5px;font-weight:600;margin-bottom:4px" data-fdid="s19e32">Training Data Poisoning</h4>
+        <p style="font-size:12px;line-height:1.4;opacity:0.85" data-fdid="s19e33">Tampered data corrupts model behavior.</p>
+      </div>
+      
+      <div class="card" style="padding:12px 14px;background:rgba(231,76,60,0.1);border-top:3px solid var(--accent)" data-fdid="s19e34">
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:4px" data-fdid="s19e35">LLM04</div>
+        <h4 style="font-size:13.5px;font-weight:600;margin-bottom:4px" data-fdid="s19e36">Model Denial of Service</h4>
+        <p style="font-size:12px;line-height:1.4;opacity:0.85" data-fdid="s19e37">Token/compute abuse drives cost and outage.</p>
+      </div>
+      
+      <div class="card" style="padding:12px 14px;background:rgba(231,76,60,0.1);border-top:3px solid var(--accent)" data-fdid="s19e38">
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:4px" data-fdid="s19e39">LLM05</div>
+        <h4 style="font-size:13.5px;font-weight:600;margin-bottom:4px" data-fdid="s19e40">Supply Chain</h4>
+        <p style="font-size:12px;line-height:1.4;opacity:0.85" data-fdid="s19e41">Risky third-party models, plugins, and datasets.</p>
+      </div>
+      
+      <div class="card" style="padding:12px 14px;background:rgba(231,76,60,0.1);border-top:3px solid var(--accent)" data-fdid="s19e42">
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:4px" data-fdid="s19e43">LLM06</div>
+        <h4 style="font-size:13.5px;font-weight:600;margin-bottom:4px" data-fdid="s19e44">Sensitive Information Disclosure</h4>
+        <p style="font-size:12px;line-height:1.4;opacity:0.85" data-fdid="s19e45">Secrets, PII, and source code leave in prompts.</p>
+      </div>
+      
+      <div class="card" style="padding:12px 14px;background:rgba(231,76,60,0.1);border-top:3px solid var(--accent)" data-fdid="s19e46">
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:4px" data-fdid="s19e47">LLM07</div>
+        <h4 style="font-size:13.5px;font-weight:600;margin-bottom:4px" data-fdid="s19e48">Insecure Plugin Design</h4>
+        <p style="font-size:12px;line-height:1.4;opacity:0.85" data-fdid="s19e49">Unsafe tool/plugin interfaces the agent can invoke.</p>
+      </div>
+      
+      <div class="card" style="padding:12px 14px;background:rgba(231,76,60,0.1);border-top:3px solid var(--accent)" data-fdid="s19e50">
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:4px" data-fdid="s19e51">LLM08</div>
+        <h4 style="font-size:13.5px;font-weight:600;margin-bottom:4px" data-fdid="s19e52">Excessive Agency</h4>
+        <p style="font-size:12px;line-height:1.4;opacity:0.85" data-fdid="s19e53">The agent can take actions it should never have been able to.</p>
+      </div>
+      
+      <div class="card" style="padding:12px 14px;background:rgba(231,76,60,0.1);border-top:3px solid var(--accent)" data-fdid="s19e54">
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:4px" data-fdid="s19e55">LLM09</div>
+        <h4 style="font-size:13.5px;font-weight:600;margin-bottom:4px" data-fdid="s19e56">Overreliance</h4>
+        <p style="font-size:12px;line-height:1.4;opacity:0.85" data-fdid="s19e57">Humans trust confident-but-wrong AI output.</p>
+      </div>
+      
+      <div class="card" style="padding:12px 14px;background:rgba(231,76,60,0.1);border-top:3px solid var(--accent)" data-fdid="s19e58">
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:4px" data-fdid="s19e59">LLM10</div>
+        <h4 style="font-size:13.5px;font-weight:600;margin-bottom:4px" data-fdid="s19e60">Model Theft</h4>
+        <p style="font-size:12px;line-height:1.4;opacity:0.85" data-fdid="s19e61">Unauthorized extraction of proprietary models.</p>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:clamp(12px,1.8vh,20px);font-size:14px;opacity:0.8" data-fdid="s19e62"><strong>Maintained by OWASP</strong> — the catalogue we'll map each risk back to as we move through the talk.</p>
+
+    <div class="spine" data-fdid="s19e63">
+      <div class="node n-data on" data-fdid="s19e64"><div class="lbl" data-fdid="s19e65">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s19e66"></div></div>
+      <div class="connector" data-fdid="s19e67"></div>
+      <div class="node n-control" data-fdid="s19e68"><div class="lbl" data-fdid="s19e69">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s19e70"></div></div>
+      <div class="connector" data-fdid="s19e71"></div>
+      <div class="node n-saas" data-fdid="s19e72"><div class="lbl" data-fdid="s19e73">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s19e74"></div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="brandbar" data-fdid="s20e0"><img src="assets/FortiAIGate.svg" style="height:78px" alt data-fdid="s20e1"><span class="wordmark" data-fdid="s20e2">FortiAIGate</span></div>
+    <div class="kicker" style="margin-top:8px" data-fdid="s20e3">Track 3 · How it works</div>
+    <h2 data-fdid="s20e4">Inline inspection of every AI interaction</h2>
+    <p class="lead" style="max-width:75ch;margin-top:10px" data-fdid="s20e5">Traffic to AI services is routed through the gateway, inspected in real time, and allowed, masked, or blocked by policy.</p>
+    <div class="flow" style="display:flex;align-items:center;gap:clamp(14px,1.5vw,24px);margin-top:clamp(20px,3vh,36px)" data-fdid="s20e6">
+      <div class="flow-step build" style="flex:1;background:rgba(255,255,255,0.05);border-radius:12px;padding:clamp(16px,2vh,24px);text-align:center;border:1px solid rgba(255,255,255,0.1)" data-fdid="s20e7">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin:0 auto 12px" data-fdid="s20e8">1</div>
+        <h3 style="font-size:clamp(16px,1.6vw,21px);margin-bottom:8px" data-fdid="s20e9">Intercept</h3>
+        <p style="font-size:15px;opacity:0.85" data-fdid="s20e10">User or app sends a prompt to an AI service.</p>
+      </div>
+      <div class="build" style="font-size:32px;color:var(--accent);font-weight:700" data-fdid="s20e11">→</div>
+      <div class="flow-step build" style="flex:1;background:rgba(255,255,255,0.05);border-radius:12px;padding:clamp(16px,2vh,24px);text-align:center;border:1px solid rgba(255,255,255,0.1)" data-fdid="s20e12">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin:0 auto 12px" data-fdid="s20e13">2</div>
+        <h3 style="font-size:clamp(16px,1.6vw,21px);margin-bottom:8px" data-fdid="s20e14">Identify</h3>
+        <p style="font-size:15px;opacity:0.85" data-fdid="s20e15">Recognize the AI app, user, and intent.</p>
+      </div>
+      <div class="build" style="font-size:32px;color:var(--accent);font-weight:700" data-fdid="s20e16">→</div>
+      <div class="flow-step build" style="flex:1;background:rgba(255,255,255,0.05);border-radius:12px;padding:clamp(16px,2vh,24px);text-align:center;border:1px solid rgba(255,255,255,0.1)" data-fdid="s20e17">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin:0 auto 12px" data-fdid="s20e18">3</div>
+        <h3 style="font-size:clamp(16px,1.6vw,21px);margin-bottom:8px" data-fdid="s20e19">Inspect</h3>
+        <p style="font-size:15px;opacity:0.85" data-fdid="s20e20">Scan prompt & response for sensitive data and threats.</p>
+      </div>
+      <div class="build" style="font-size:32px;color:var(--accent);font-weight:700" data-fdid="s20e21">→</div>
+      <div class="flow-step build" style="flex:1;background:rgba(255,255,255,0.05);border-radius:12px;padding:clamp(16px,2vh,24px);text-align:center;border:1px solid rgba(255,255,255,0.1)" data-fdid="s20e22">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin:0 auto 12px" data-fdid="s20e23">4</div>
+        <h3 style="font-size:clamp(16px,1.6vw,21px);margin-bottom:8px" data-fdid="s20e24">Enforce</h3>
+        <p style="font-size:15px;opacity:0.85" data-fdid="s20e25">Allow, redact, or block — and log it all.</p>
+      </div>
+    </div>
+    <div class="spine" data-fdid="s20e26">
+      <div class="node n-data on" data-fdid="s20e27"><div class="lbl" data-fdid="s20e28">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s20e29"></div></div>
+      <div class="connector" data-fdid="s20e30"></div>
+      <div class="node n-control" data-fdid="s20e31"><div class="lbl" data-fdid="s20e32">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s20e33"></div></div>
+      <div class="connector" data-fdid="s20e34"></div>
+      <div class="node n-saas" data-fdid="s20e35"><div class="lbl" data-fdid="s20e36">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s20e37"></div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="brandbar" data-fdid="s21e0"><img src="assets/FortiAIGate.svg" style="height:78px" alt data-fdid="s21e1"><span class="wordmark" data-fdid="s21e2">FortiAIGate</span></div>
+    <div class="kicker" style="margin-top:8px" data-fdid="s21e3">Track 3 · Architecture</div>
+    <h2 style="margin-bottom:6px" data-fdid="s21e4">Where FortiAIGate sits</h2>
+    <div style="display:flex;align-items:center;gap:clamp(20px,2.5vw,40px);margin-top:clamp(20px,3vh,36px)" data-fdid="s21e5">
+      <div style="flex:1;display:flex;flex-direction:column;gap:16px" data-fdid="s21e6">
+        <div class="build" style="background:rgba(255,255,255,0.05);border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;border:1px solid rgba(255,255,255,0.1)" data-fdid="s21e7">
+          <div style="width:56px;height:56px;background:rgba(231,76,60,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0" data-fdid="s21e8">
+            <img src="assets/Application Control-white.svg" style="width:36px;height:36px" data-fdid="s21e9">
+          </div>
+          <div data-fdid="s21e10">
+            <div style="font-weight:600;font-size:17px" data-fdid="s21e11">Employees</div>
+            <div style="font-size:14px;opacity:0.7" data-fdid="s21e12">using GenAI</div>
+          </div>
+        </div>
+        <div class="build" style="background:rgba(255,255,255,0.05);border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;border:1px solid rgba(255,255,255,0.1)" data-fdid="s21e13">
+          <div style="width:56px;height:56px;background:rgba(231,76,60,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0" data-fdid="s21e14">
+            <img src="assets/Application-white.svg" style="width:36px;height:36px" data-fdid="s21e15">
+          </div>
+          <div data-fdid="s21e16">
+            <div style="font-weight:600;font-size:17px" data-fdid="s21e17">LLM-powered</div>
+            <div style="font-size:14px;opacity:0.7" data-fdid="s21e18">apps</div>
+          </div>
+        </div>
+      </div>
+      <div class="build" style="font-size:40px;color:var(--accent);font-weight:700" data-fdid="s21e19">→</div>
+      <div class="build" style="flex:1.3;background:linear-gradient(135deg,rgba(231,76,60,0.15),rgba(231,76,60,0.05));border:2px solid var(--accent);border-radius:16px;padding:clamp(20px,3vh,32px);text-align:center" data-fdid="s21e20">
+        <div style="width:80px;height:80px;margin:0 auto 16px" data-fdid="s21e21">
+          <img src="assets/FortiAIGate-white.svg" style="width:100%;height:100%" data-fdid="s21e22">
+        </div>
+        <div style="font-size:clamp(20px,2.2vw,28px);font-weight:700;margin-bottom:6px" data-fdid="s21e23">FortiAIGate</div>
+        <div style="font-size:15px;opacity:0.85;margin-bottom:14px" data-fdid="s21e24">Inspect every prompt & response</div>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap" data-fdid="s21e25">
+          <span style="background:rgba(255,255,255,0.15);padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600" data-fdid="s21e26">Discover</span>
+          <span style="background:rgba(255,255,255,0.15);padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600" data-fdid="s21e27">DLP</span>
+          <span style="background:rgba(255,255,255,0.15);padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600" data-fdid="s21e28">Threat protection</span>
+          <span style="background:rgba(255,255,255,0.15);padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600" data-fdid="s21e29">Policy</span>
+        </div>
+      </div>
+      <div class="build" style="font-size:40px;color:var(--accent);font-weight:700" data-fdid="s21e30">→</div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:16px" data-fdid="s21e31">
+        <div class="build" style="background:rgba(255,255,255,0.05);border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;border:1px solid rgba(255,255,255,0.1)" data-fdid="s21e32">
+          <div style="width:56px;height:56px;background:rgba(46,204,113,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0" data-fdid="s21e33">
+            <img src="assets/Cloud-white.svg" style="width:36px;height:36px" data-fdid="s21e34">
+          </div>
+          <div data-fdid="s21e35">
+            <div style="font-weight:600;font-size:17px" data-fdid="s21e36">Public GenAI</div>
+            <div style="font-size:14px;opacity:0.7" data-fdid="s21e37">ChatGPT, Copilot…</div>
+          </div>
+        </div>
+        <div class="build" style="background:rgba(255,255,255,0.05);border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;border:1px solid rgba(255,255,255,0.1)" data-fdid="s21e38">
+          <div style="width:56px;height:56px;background:rgba(46,204,113,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0" data-fdid="s21e39">
+            <img src="assets/Cloud-white.svg" style="width:36px;height:36px" data-fdid="s21e40">
+          </div>
+          <div data-fdid="s21e41">
+            <div style="font-weight:600;font-size:17px" data-fdid="s21e42">Private models</div>
+            <div style="font-size:14px;opacity:0.7" data-fdid="s21e43">Self-hosted LLMs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="spine" data-fdid="s21e44">
+      <div class="node n-data on" data-fdid="s21e45"><div class="lbl" data-fdid="s21e46">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s21e47"></div></div>
+      <div class="connector" data-fdid="s21e48"></div>
+      <div class="node n-control" data-fdid="s21e49"><div class="lbl" data-fdid="s21e50">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s21e51"></div></div>
+      <div class="connector" data-fdid="s21e52"></div>
+      <div class="node n-saas" data-fdid="s21e53"><div class="lbl" data-fdid="s21e54">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s21e55"></div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="brandbar" data-fdid="s22e0"><img src="assets/FortiAIGate.svg" style="height:78px" alt data-fdid="s22e1"><span class="wordmark" data-fdid="s22e2">FortiAIGate</span></div>
+    <div class="kicker" style="margin-top:8px" data-fdid="s22e3">Track 3 · Capabilities</div>
+    <h2 data-fdid="s22e4">What FortiAIGate does</h2>
+    <div class="row" style="margin-top:clamp(18px,2.8vh,32px);gap:clamp(16px,2vw,24px)" data-fdid="s22e5">
+      <div class="card build" style="flex:1;border-top:4px solid var(--accent)" data-fdid="s22e6">
+        <h3 style="font-size:18px;margin-bottom:10px" data-fdid="s22e7">Sanctioned use & visibility</h3>
+        <p data-fdid="s22e8">A governed security layer in front of the AI services you sanction — full visibility into the prompts and responses that flow through the gateway.</p>
+      </div>
+      <div class="card build" style="flex:1;border-top:4px solid var(--data)" data-fdid="s22e9">
+        <h3 style="font-size:18px;margin-bottom:10px" data-fdid="s22e10">Data loss prevention</h3>
+        <p data-fdid="s22e11">Detect and redact secrets, PII, and regulated data before it reaches an AI model.</p>
+      </div>
+      <div class="card build" style="flex:1;border-top:4px solid var(--saas)" data-fdid="s22e12">
+        <h3 style="font-size:18px;margin-bottom:10px" data-fdid="s22e13">Threat protection</h3>
+        <p data-fdid="s22e14">Block prompt injection, jailbreaks, and malicious or unsafe model output.</p>
+      </div>
+    </div>
+    <div class="row" style="margin-top:clamp(14px,2vh,20px);gap:clamp(16px,2vw,24px)" data-fdid="s22e15">
+      <div class="card build" style="flex:1;border-top:4px solid var(--control)" data-fdid="s22e16">
+        <h3 style="font-size:18px;margin-bottom:10px" data-fdid="s22e17">Granular policy</h3>
+        <p data-fdid="s22e18">Per-user, per-group, per-app rules — sanction the right tools, block the rest.</p>
+      </div>
+      <div class="card build" style="flex:1;border-top:4px solid var(--accent)" data-fdid="s22e19">
+        <h3 style="font-size:18px;margin-bottom:10px" data-fdid="s22e20">Compliance & audit</h3>
+        <p data-fdid="s22e21">Full logging of AI interactions for governance, audit, and investigation.</p>
+      </div>
+      <div class="card build" style="flex:1;border-top:4px solid var(--data)" data-fdid="s22e22">
+        <h3 style="font-size:18px;margin-bottom:10px" data-fdid="s22e23">Fabric integration</h3>
+        <p data-fdid="s22e24">Shares context with FortiGate, FortiGuard, and the broader Security Fabric.</p>
+      </div>
+    </div>
+    <div class="spine" data-fdid="s22e25">
+      <div class="node n-data on" data-fdid="s22e26"><div class="lbl" data-fdid="s22e27">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s22e28"></div></div>
+      <div class="connector" data-fdid="s22e29"></div>
+      <div class="node n-control" data-fdid="s22e30"><div class="lbl" data-fdid="s22e31">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s22e32"></div></div>
+      <div class="connector" data-fdid="s22e33"></div>
+      <div class="node n-saas" data-fdid="s22e34"><div class="lbl" data-fdid="s22e35">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s22e36"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11 — ACT I WRAP -->
+  <div class="slide dark">
+    <div class="kicker" data-fdid="s23e0">Act I — The Insertion Theme</div>
+    <h2 style="max-width:18ch" data-fdid="s23e1">Three products. One insertion point.</h2>
+    <div class="row" style="margin-top:clamp(26px,4.5vh,46px);gap:clamp(16px,2vw,28px);align-items:center" data-fdid="s23e2">
+      <div class="card dark build-bounce" style="flex:1;text-align:center" data-fdid="s23e3"><img src="assets/FortiGate VM-white.svg" style="height:46px" alt data-fdid="s23e4"><h3 style="color:#fff;margin-top:12px" data-fdid="s23e5">Network</h3><p data-fdid="s23e6">Multi-protocol perimeter &amp; segmentation</p></div>
+      <div class="build" style="color:#5a6474;font-size:30px" data-fdid="s23e7">→</div>
+      <div class="card dark build-bounce" style="flex:1;text-align:center" data-fdid="s23e8"><img src="assets/FortiWeb-white.svg" style="height:46px" alt data-fdid="s23e9"><h3 style="color:#fff;margin-top:12px" data-fdid="s23e10">Web app</h3><p data-fdid="s23e11">HTTP/HTTPS, deep on the app layer</p></div>
+      <div class="build" style="color:#5a6474;font-size:30px" data-fdid="s23e12">→</div>
+      <div class="card dark build-bounce" style="flex:1;text-align:center" data-fdid="s23e13"><img src="assets/FortiAIGate-white.svg" style="height:46px" alt data-fdid="s23e14"><h3 style="color:#fff;margin-top:12px" data-fdid="s23e15">AI / agent</h3><p data-fdid="s23e16">Natural-language threats, agentic surface</p></div>
+    </div>
+    <p class="lead build" style="margin-top:clamp(22px,3.5vh,38px);max-width:56ch" data-fdid="s23e17">Different facets, different layers of abstraction — but <strong style="color:#fff">very similar insertion points</strong> in the data plane. Now we shift the insertion point entirely.</p>
+    <div class="spine" data-fdid="s23e18">
+      <div class="node n-data on" data-fdid="s23e19"><div class="lbl" data-fdid="s23e20">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s23e21"></div></div>
+      <div class="connector" data-fdid="s23e22"></div>
+      <div class="node n-control" data-fdid="s23e23"><div class="lbl" data-fdid="s23e24">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s23e25"></div></div>
+      <div class="connector" data-fdid="s23e26"></div>
+      <div class="node n-saas" data-fdid="s23e27"><div class="lbl" data-fdid="s23e28">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s23e29"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12 — ACT II DIVIDER / THE PIVOT -->
+  <div class="slide dark">
+    <div class="kicker" data-fdid="s24e0">Act II — The Control Plane</div>
+    <h1 style="max-width:14ch" data-fdid="s24e1">Oversight</h1>
+    <div class="accent-line" data-fdid="s24e2"></div>
+    <p class="lead" style="max-width:46ch" data-fdid="s24e3">The biggest shift cloud brings: security is determined by <strong style="color:#fff">configuration and identity</strong> — not just traffic. You can't put a firewall in front of a misconfiguration.</p>
+    <div class="spine" data-fdid="s24e4">
+      <div class="node n-data" data-fdid="s24e5"><div class="lbl" data-fdid="s24e6">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s24e7"></div></div>
+      <div class="connector" data-fdid="s24e8"></div>
+      <div class="node n-control on" data-fdid="s24e9"><div class="lbl" data-fdid="s24e10">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s24e11"></div></div>
+      <div class="connector" data-fdid="s24e12"></div>
+      <div class="node n-saas" data-fdid="s24e13"><div class="lbl" data-fdid="s24e14">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s24e15"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13 — THE PIVOT EXPLAINED -->
+  <div class="slide">
+    <div class="kicker" data-fdid="s25e0">Section 6 · From Data Plane to Control Plane</div>
+    <h2 style="max-width:20ch" data-fdid="s25e1">"Secure or not" is often just a toggle</h2>
+    <div class="row" style="margin-top:clamp(16px,2.8vh,30px);gap:clamp(20px,3vw,44px);align-items:stretch" data-fdid="s25e2">
+      <div style="flex:1;display:flex;flex-direction:column;gap:clamp(18px,2.6vh,30px)" data-fdid="s25e3">
+        <ul class="clean">
+          <li data-fdid="s25e4">The on-prem mental model = a clearly defined edge; we try to replicate it in cloud</li>
+          <li data-fdid="s25e5">But cloud is <strong style="color:var(--ink)">self-service and identity / IAM-driven</strong> — much lives in the control plane</li>
+          <li data-fdid="s25e6">Whether something is secure often = which position a single toggle is in</li>
+        </ul>
+        <div class="card" style="background:#fde8e6;border:none;border-left:5px solid var(--accent);padding:clamp(16px,1.8vw,24px)" data-fdid="s25e7">
+          <h3 style="color:var(--accent);max-width:22ch" data-fdid="s25e8">You can't insert a firewall in front of a misconfiguration.</h3>
+        </div>
+      </div>
+      <div style="flex:1.1" data-fdid="s25e9">
+        <div style="background:#fff;border-radius:14px;padding:clamp(12px,1.4vw,18px);box-shadow:0 14px 44px rgba(20,32,43,.12);border:1px solid var(--line);height:100%;display:flex;flex-direction:column" data-fdid="s25e10">
+          <img src="assets/pasted-1780930051361-0.png" alt="Cloud storage bucket bypassing the NGFW" style="width:100%;height:auto;display:block;border-radius:8px" data-fdid="s25e11">
+          <p style="margin-top:12px;font-size:13.5px;line-height:1.5;color:var(--muted)" data-fdid="s25e12">Cloud storage (S3, GCS, Azure Blob) is among the most commonly used — and most commonly <strong style="color:var(--ink)">misconfigured</strong> — cloud resources. Data flows in and out over the internet; it never passes through the firewall, so the NGFW has <strong style="color:var(--ink)">zero visibility</strong> into whether a bucket is public or private.</p>
+        </div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:clamp(16px,2.6vh,28px);max-width:64ch" data-fdid="s25e13">A different problem that needs a different tool — starting with <strong style="color:var(--ink)">visibility</strong> into how things <em>should</em> be done.</p>
+    <div class="spine" data-fdid="s25e14">
+      <div class="node n-data" data-fdid="s25e15"><div class="lbl" data-fdid="s25e16">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s25e17"></div></div>
+      <div class="connector" data-fdid="s25e18"></div>
+      <div class="node n-control on" data-fdid="s25e19"><div class="lbl" data-fdid="s25e20">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s25e21"></div></div>
+      <div class="connector" data-fdid="s25e22"></div>
+      <div class="node n-saas" data-fdid="s25e23"><div class="lbl" data-fdid="s25e24">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s25e25"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 14 — TRACK 4: CNAPP — THE POSTURE MOTION -->
+  <div class="slide dark">
+    <div class="brandbar" data-fdid="s26e0"><img src="assets/FortiCNAPP-white.svg" style="height:30px" alt data-fdid="s26e1"><span class="wordmark" style="color:#fff" data-fdid="s26e2">FortiCNAPP</span></div>
+    <div class="kicker" style="margin-top:8px" data-fdid="s26e3">Track 4 · Posture &amp; Entitlements</div>
+    <h2 data-fdid="s26e4">The posture motion</h2>
+    <div class="row" style="margin-top:clamp(24px,4vh,44px);gap:clamp(12px,1.6vw,22px)" data-fdid="s26e5">
+      <div class="card dark build-bounce" style="flex:1;border-top:4px solid var(--control)" data-fdid="s26e6"><div class="big" style="font-size:clamp(28px,3vw,40px);color:var(--control)" data-fdid="s26e7">1</div><h3 style="color:#fff;margin-top:6px" data-fdid="s26e8">Visibility</h3><p data-fdid="s26e9">How it <em>should</em> be configured</p></div>
+      <div class="card dark build-bounce" style="flex:1;border-top:4px solid var(--control)" data-fdid="s26e10"><div class="big" style="font-size:clamp(28px,3vw,40px);color:var(--control)" data-fdid="s26e11">2</div><h3 style="color:#fff;margin-top:6px" data-fdid="s26e12">Framework</h3><p data-fdid="s26e13">Align to compliance controls</p></div>
+      <div class="card dark build-bounce" style="flex:1;border-top:4px solid var(--control)" data-fdid="s26e14"><div class="big" style="font-size:clamp(28px,3vw,40px);color:var(--control)" data-fdid="s26e15">3</div><h3 style="color:#fff;margin-top:6px" data-fdid="s26e16">Inventory gaps</h3><p data-fdid="s26e17">Where you're not to spec</p></div>
+      <div class="card dark build-bounce" style="flex:1;border-top:4px solid var(--accent)" data-fdid="s26e18"><div class="big" style="font-size:clamp(28px,3vw,40px);color:var(--accent)" data-fdid="s26e19">4</div><h3 style="color:#fff;margin-top:6px" data-fdid="s26e20">Plug the holes</h3><p data-fdid="s26e21">Remediate</p></div>
+    </div>
+    <p class="lead build" style="margin-top:clamp(20px,3vh,34px);max-width:58ch" data-fdid="s26e22">Establish how things should be configured, inventory everywhere they aren't, and <strong style="color:#fff">start plugging the holes in the ship.</strong></p>
+    <div class="spine" data-fdid="s26e23">
+      <div class="node n-data" data-fdid="s26e24"><div class="lbl" data-fdid="s26e25">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s26e26"></div></div>
+      <div class="connector" data-fdid="s26e27"></div>
+      <div class="node n-control on" data-fdid="s26e28"><div class="lbl" data-fdid="s26e29">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s26e30"></div></div>
+      <div class="connector" data-fdid="s26e31"></div>
+      <div class="node n-saas" data-fdid="s26e32"><div class="lbl" data-fdid="s26e33">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s26e34"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 15 — TRACK 4: CNAPP PLATFORM + MATURITY-AWARE POSITIONING -->
+  <div class="slide">
+    <div class="kicker" data-fdid="s27e0">Track 4 · The full platform &amp; how to lead</div>
+    <h2 style="max-width:22ch" data-fdid="s27e1">Lead with CSPM + CIEM. Expand into the rest.</h2>
+    <div class="row" style="margin-top:clamp(20px,3.5vh,38px);gap:clamp(20px,3vw,40px);align-items:flex-start" data-fdid="s27e2">
+      <div style="flex:1.05" data-fdid="s27e3">
+        <h3 style="color:var(--control)" data-fdid="s27e4">The full CNAPP platform</h3>
+        <ul class="clean" style="margin-top:12px">
+          <li data-fdid="s27e5"><strong style="color:var(--ink)">CSPM</strong> — cloud security posture management</li>
+          <li data-fdid="s27e6"><strong style="color:var(--ink)">CIEM</strong> — cloud infrastructure entitlement management</li>
+          <li data-fdid="s27e7">Container security — registry / image scanning</li>
+          <li data-fdid="s27e8">Code security — 3rd-party reuse, SBOM, code weaknesses</li>
+          <li data-fdid="s27e9">Runtime security</li>
+        </ul>
+      </div>
+      <div class="card build" style="flex:1;background:var(--card2);border:none" data-fdid="s27e10">
+        <div class="tag" style="background:#fff;color:var(--control)" data-fdid="s27e11">Maturity-aware positioning</div>
+        <p class="mt-2" style="margin-top:10px" data-fdid="s27e12">For <strong style="color:var(--ink)">migration &amp; modernization</strong> customers, lead with <strong style="color:var(--ink)">CSPM</strong> and, by extension, <strong style="color:var(--ink)">CIEM</strong>.</p>
+        <p style="margin-top:10px" data-fdid="s27e13">Container, code &amp; runtime are the <strong style="color:var(--ink)">expand</strong> story once they've matured — not the opening pitch.</p>
+        <p style="margin-top:10px;color:var(--control);font-weight:700" data-fdid="s27e14">Consistent with the AWS Summit data: Canadian customers skew earlier on the curve.</p>
+      </div>
+    </div>
+    <div class="spine" data-fdid="s27e15">
+      <div class="node n-data" data-fdid="s27e16"><div class="lbl" data-fdid="s27e17">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s27e18"></div></div>
+      <div class="connector" data-fdid="s27e19"></div>
+      <div class="node n-control on" data-fdid="s27e20"><div class="lbl" data-fdid="s27e21">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s27e22"></div></div>
+      <div class="connector" data-fdid="s27e23"></div>
+      <div class="node n-saas" data-fdid="s27e24"><div class="lbl" data-fdid="s27e25">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s27e26"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 16 — ACT III DIVIDER -->
+  <div class="slide dark">
+    <div class="kicker" data-fdid="s28e0">Act III — The SaaS Plane</div>
+    <h1 style="max-width:14ch" data-fdid="s28e1">Consumption</h1>
+    <div class="accent-line" data-fdid="s28e2"></div>
+    <p class="lead" style="max-width:46ch" data-fdid="s28e3">Govern what you <strong style="color:#fff">use but don't host.</strong> The third insertion point — the SaaS tooling customers increasingly run their business on.</p>
+    <div class="spine" data-fdid="s28e4">
+      <div class="node n-data" data-fdid="s28e5"><div class="lbl" data-fdid="s28e6">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s28e7"></div></div>
+      <div class="connector" data-fdid="s28e8"></div>
+      <div class="node n-control" data-fdid="s28e9"><div class="lbl" data-fdid="s28e10">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s28e11"></div></div>
+      <div class="connector" data-fdid="s28e12"></div>
+      <div class="node n-saas on" data-fdid="s28e13"><div class="lbl" data-fdid="s28e14">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s28e15"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 17 — TRACK 5: SSPM + CREDENTIAL STUFFING -->
+  <!-- SLIDE 18 — TRACK 5: THE PERIMETER DISSOLVED -->
+  <div class="slide">
+    <div class="kicker" data-fdid="s29e0">Track 5 · SaaS Security (SSPM)</div>
+    <h2 style="max-width:20ch" data-fdid="s29e1">The perimeter dissolved</h2>
+    <div class="row" style="margin-top:clamp(14px,2.4vh,26px);gap:clamp(22px,3vw,46px);align-items:center" data-fdid="s29e2">
+      <div style="flex:1.05" data-fdid="s29e3">
+        <p class="lead" data-fdid="s29e4">The CFO bought Microsoft 365. Sales bought Salesforce. Engineering bought GitHub. HR bought Workday. Marketing bought… 47 things. The data the firewall used to protect now lives in <strong style="color:var(--ink)">someone else's data center</strong> — reached over the public internet with a username and password.</p>
+        <div class="row" style="margin-top:clamp(16px,2.6vh,26px);gap:clamp(12px,1.6vw,22px)" data-fdid="s29e5">
+          <div style="flex:1" data-fdid="s29e6"><div class="big" style="font-size:clamp(34px,4vw,52px);color:var(--saas)" data-fdid="s29e7">112</div><p style="font-size:13px;color:var(--muted);margin-top:4px" data-fdid="s29e8">avg SaaS apps per organization (2024)</p></div>
+          <div style="flex:1" data-fdid="s29e9"><div class="big" style="font-size:clamp(34px,4vw,52px);color:var(--accent)" data-fdid="s29e10">79%</div><p style="font-size:13px;color:var(--muted);margin-top:4px" data-fdid="s29e11">of orgs had a SaaS security incident in the past 12 months</p></div>
+          <div style="flex:1" data-fdid="s29e12"><div class="big" style="font-size:clamp(34px,4vw,52px);color:var(--ink)" data-fdid="s29e13">0</div><p style="font-size:13px;color:var(--muted);margin-top:4px" data-fdid="s29e14">of them sit behind your firewall</p></div>
+        </div>
+      </div>
+      <div style="flex:.95" data-fdid="s29e15">
+        <div style="position:relative;padding:clamp(20px,3vh,32px);background:rgba(46,204,113,0.05);border-radius:14px;border:2px solid var(--saas);min-height:200px;display:flex;flex-direction:column;justify-content:center;gap:12px" data-fdid="s29e16">
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap" data-fdid="s29e17">
+            <div style="background:rgba(46,204,113,0.15);padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid rgba(46,204,113,0.3)" data-fdid="s29e18">M365</div>
+            <div style="background:rgba(46,204,113,0.15);padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid rgba(46,204,113,0.3)" data-fdid="s29e19">Salesforce</div>
+            <div style="background:rgba(46,204,113,0.15);padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid rgba(46,204,113,0.3)" data-fdid="s29e20">GitHub</div>
+          </div>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap" data-fdid="s29e21">
+            <div style="background:rgba(46,204,113,0.15);padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid rgba(46,204,113,0.3)" data-fdid="s29e22">Workday</div>
+            <div style="background:rgba(46,204,113,0.15);padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid rgba(46,204,113,0.3)" data-fdid="s29e23">Slack</div>
+            <div style="background:rgba(46,204,113,0.15);padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid rgba(46,204,113,0.3)" data-fdid="s29e24">DocuSign</div>
+          </div>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap" data-fdid="s29e25">
+            <div style="background:rgba(46,204,113,0.15);padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid rgba(46,204,113,0.3)" data-fdid="s29e26">Zoom</div>
+            <div style="background:rgba(46,204,113,0.15);padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid rgba(46,204,113,0.3)" data-fdid="s29e27">Dropbox</div>
+            <div style="background:rgba(46,204,113,0.15);padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid rgba(46,204,113,0.3)" data-fdid="s29e28">…+104</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;font-size:13px;opacity:0.7;font-style:italic" data-fdid="s29e29">Reached over the public internet with a username and password</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:clamp(14px,2.4vh,24px);background:var(--card2);border:none;border-left:4px solid var(--saas)" data-fdid="s29e30">
+      <div class="tag" style="background:#fff;color:var(--saas)" data-fdid="s29e31">Identity is the new perimeter</div>
+      <p style="margin-top:8px" data-fdid="s29e32">There is no "inside" anymore. Every employee, contractor, and third-party app authenticates from anywhere — your protection is now <strong style="color:var(--ink)">whatever posture each SaaS tenant is configured with.</strong></p>
+    </div>
+    <div class="spine" data-fdid="s29e33">
+      <div class="node n-data" data-fdid="s29e34"><div class="lbl" data-fdid="s29e35">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s29e36"></div></div>
+      <div class="connector" data-fdid="s29e37"></div>
+      <div class="node n-control" data-fdid="s29e38"><div class="lbl" data-fdid="s29e39">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s29e40"></div></div>
+      <div class="connector" data-fdid="s29e41"></div>
+      <div class="node n-saas on" data-fdid="s29e42"><div class="lbl" data-fdid="s29e43">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s29e44"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 19 — TRACK 5: SSPM + CREDENTIAL STUFFING -->
+  <div class="slide">
+    <div class="kicker" data-fdid="s30e0">Act III · The paradigm shift</div>
+    <h2 style="max-width:26ch;margin-bottom:6px" data-fdid="s30e1">The surface has moved</h2>
+    <p class="lead" style="max-width:78ch;margin-top:6px;font-size:15px" data-fdid="s30e2">Traditional security was built for traditional attack surface — and the surface has moved. We've spent years getting good at network defense. <strong style="color:var(--ink)">Those controls matter, and they're not going anywhere.</strong></p>
+    <div class="row" style="margin-top:clamp(12px,1.8vh,18px);gap:clamp(20px,2.5vw,36px);align-items:stretch" data-fdid="s30e3">
+      <div style="flex:1" data-fdid="s30e4">
+        <div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:clamp(12px,1.8vh,18px);border:2px solid rgba(255,255,255,0.15)" data-fdid="s30e5">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px" data-fdid="s30e6">
+            <div style="width:28px;height:28px;background:rgba(90,100,116,0.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#5a6474" data-fdid="s30e7">1</div>
+            <h3 style="font-size:15px;margin:0" data-fdid="s30e8">What attackers had to get past</h3>
+          </div>
+          
+          <div style="background:#fff;border-radius:8px;padding:6px;margin-bottom:90px" data-fdid="s30e9">
+            <img src="assets/pasted-1781706337741-0.png" alt="Corporate perimeter with firewall protection" style="width:100%;height:auto;display:block;border-radius:4px" data-fdid="s30e10">
+          </div>
+          
+          <ul style="list-style:none;padding:0;margin:0 0 10px 0;display:flex;flex-direction:column;gap:5px">
+            <li style="font-size:12px;line-height:1.4;padding-left:16px;position:relative" data-fdid="s30e11">
+              <span style="position:absolute;left:0;color:var(--accent)" data-fdid="s30e12">•</span>
+              Firewall between them and the network
+            </li>
+            <li style="font-size:12px;line-height:1.4;padding-left:16px;position:relative" data-fdid="s30e13">
+              <span style="position:absolute;left:0;color:var(--accent)" data-fdid="s30e14">•</span>
+              Email gateway scanning attachments
+            </li>
+            <li style="font-size:12px;line-height:1.4;padding-left:16px;position:relative" data-fdid="s30e15">
+              <span style="position:absolute;left:0;color:var(--accent)" data-fdid="s30e16">•</span>
+              AV / EDR on every endpoint
+            </li>
+            <li style="font-size:12px;line-height:1.4;padding-left:16px;position:relative" data-fdid="s30e17">
+              <span style="position:absolute;left:0;color:var(--accent)" data-fdid="s30e18">•</span>
+              Active Directory, on-prem
+            </li>
+          </ul>
+          
+          <div style="background:rgba(231,76,60,0.12);border-left:3px solid var(--accent);padding:9px;border-radius:6px" data-fdid="s30e19">
+            <div style="font-weight:600;font-size:12px;margin-bottom:4px;color:var(--accent)" data-fdid="s30e20">Attack vector: Malicious payload</div>
+            <p style="font-size:11px;line-height:1.4;opacity:0.9;margin:0" data-fdid="s30e21">Phishing → weaponized attachment → lateral movement. <strong style="color:var(--ink)">We got good at stopping this.</strong></p>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1" data-fdid="s30e22">
+        <div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:clamp(12px,1.8vh,18px);border:2px solid rgba(255,255,255,0.15)" data-fdid="s30e23">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px" data-fdid="s30e24">
+            <div style="width:28px;height:28px;background:rgba(90,100,116,0.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#5a6474" data-fdid="s30e25">2</div>
+            <h3 style="font-size:15px;margin:0" data-fdid="s30e26">Identity is the perimeter</h3>
+          </div>
+          
+          <div style="background:#fff;border-radius:8px;padding:6px;margin-bottom:10px" data-fdid="s30e27">
+            <img src="assets/pasted-1780932392623-0.png" alt="The dissolved perimeter — SaaS apps reached over the public internet" style="width:100%;height:auto;display:block;border-radius:4px" data-fdid="s30e28">
+          </div>
+          
+          <ul style="list-style:none;padding:0;margin:0 0 10px 0;display:flex;flex-direction:column;gap:5px">
+            <li style="font-size:12px;line-height:1.4;padding-left:16px;position:relative" data-fdid="s30e29">
+              <span style="position:absolute;left:0;color:var(--accent)" data-fdid="s30e30">•</span>
+              112 avg SaaS apps per organization
+            </li>
+            <li style="font-size:12px;line-height:1.4;padding-left:16px;position:relative" data-fdid="s30e31">
+              <span style="position:absolute;left:0;color:var(--accent)" data-fdid="s30e32">•</span>
+              79% had a SaaS security incident (2024)
+            </li>
+            <li style="font-size:12px;line-height:1.4;padding-left:16px;position:relative" data-fdid="s30e33">
+              <span style="position:absolute;left:0;color:var(--accent)" data-fdid="s30e34">•</span>
+              Zero sit behind your firewall
+            </li>
+            <li style="font-size:12px;line-height:1.4;padding-left:16px;position:relative" data-fdid="s30e35">
+              <span style="position:absolute;left:0;color:var(--accent)" data-fdid="s30e36">•</span>
+              Reached with username & password
+            </li>
+          </ul>
+          
+          <div style="background:rgba(231,76,60,0.12);border-left:3px solid var(--accent);padding:9px;border-radius:6px" data-fdid="s30e37">
+            <div style="font-weight:600;font-size:12px;margin-bottom:4px;color:var(--accent)" data-fdid="s30e38">Attack vector: Credential abuse</div>
+            <p style="font-size:11px;line-height:1.4;opacity:0.9;margin:0" data-fdid="s30e39">No malicious payload. No EDR alert. Just a <strong style="color:var(--ink)">valid login</strong> to a misconfigured SaaS app.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="lead build" style="margin-top:clamp(10px,1.6vh,16px);max-width:76ch;text-align:center;margin-left:auto;margin-right:auto;font-size:15px" data-fdid="s30e40">The question is whether our thinking has kept pace. Let us walk you through what security looks like <strong style="color:var(--ink)">beyond the confines of the network</strong> — built for the enterprise you actually run today.</p>
+    <div class="spine" data-fdid="s30e41">
+      <div class="node n-data" data-fdid="s30e42"><div class="lbl" data-fdid="s30e43">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s30e44"></div></div>
+      <div class="connector" data-fdid="s30e45"></div>
+      <div class="node n-control" data-fdid="s30e46"><div class="lbl" data-fdid="s30e47">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s30e48"></div></div>
+      <div class="connector" data-fdid="s30e49"></div>
+      <div class="node n-saas on" data-fdid="s30e50"><div class="lbl" data-fdid="s30e51">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s30e52"></div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="kicker" data-fdid="s31e0">Track 5 · SaaS Security (SSPM)</div>
+    <h2 style="max-width:20ch" data-fdid="s31e1">The exposure is what you haven't thought to cover</h2>
+    <p class="lead" style="max-width:74ch;margin-top:clamp(12px,2vh,22px)" data-fdid="s31e2">Phishing didn't go away — malicious payloads, Office macros. But that's well-trodden ground. The real risk is the surface we <strong style="color:var(--ink)">haven't scoped</strong>: visibility into the whole SaaS estate and the ability to enforce governance &amp; best practice.</p>
+    <div class="row" style="margin-top:clamp(16px,2.6vh,28px);gap:clamp(20px,3vw,40px);align-items:stretch" data-fdid="s31e3">
+      <div style="flex:1;background:#fff;border-radius:14px;padding:clamp(8px,1vw,12px);box-shadow:0 14px 44px rgba(20,32,43,.12);border:1px solid var(--line);display:flex;align-items:center" data-fdid="s31e4">
+        <img src="assets/pasted-1780932674058-0.png" alt="SaaS security posture management" style="width:100%;height:auto;display:block;border-radius:8px" data-fdid="s31e5">
+      </div>
+      <div class="card build" style="flex:1;background:var(--card2);border:none" data-fdid="s31e6">
+        <div class="tag" style="background:#fff;color:var(--accent)" data-fdid="s31e7">Threat narrative · Credential stuffing</div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px" data-fdid="s31e8">
+          <div class="chip" style="background:#fff" data-fdid="s31e9">Same companies use the same SaaS</div>
+          <div style="color:var(--accent);font-weight:900;padding-left:4px" data-fdid="s31e10">↓</div>
+          <div class="chip" style="background:#fff" data-fdid="s31e11">One leaked credential is replayed across other common SaaS</div>
+          <div style="color:var(--accent);font-weight:900;padding-left:4px" data-fdid="s31e12">↓</div>
+          <div class="chip" style="background:#fde8e6;border-color:var(--accent);color:var(--accent)" data-fdid="s31e13">Attacker entry point → access to your data</div>
+        </div>
+      </div>
+    </div>
+    <div class="spine" data-fdid="s31e14">
+      <div class="node n-data" data-fdid="s31e15"><div class="lbl" data-fdid="s31e16">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s31e17"></div></div>
+      <div class="connector" data-fdid="s31e18"></div>
+      <div class="node n-control" data-fdid="s31e19"><div class="lbl" data-fdid="s31e20">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s31e21"></div></div>
+      <div class="connector" data-fdid="s31e22"></div>
+      <div class="node n-saas on" data-fdid="s31e23"><div class="lbl" data-fdid="s31e24">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s31e25"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 19b — TRACK 5: SSPM DASHBOARD (SOLUTION IN ACTION) -->
+  <div class="slide">
+    <div class="kicker" data-fdid="s32e0">Track 5 · SaaS Security (SSPM)</div>
+    <h2 style="max-width:26ch" data-fdid="s32e1">Visibility &amp; governance across the whole SaaS estate</h2>
+    <div class="row" style="margin-top:clamp(14px,2.4vh,26px);gap:clamp(20px,3vw,40px);align-items:center" data-fdid="s32e2">
+      <div style="flex:1.5;background:#fff;border-radius:14px;padding:clamp(8px,1vw,12px);box-shadow:0 14px 44px rgba(20,32,43,.12);border:1px solid var(--line)" data-fdid="s32e3">
+        <img src="assets/pasted-1780932936630-0.png" alt="SSPM dashboard — SaaS posture overview" style="width:100%;height:auto;display:block;border-radius:8px" data-fdid="s32e4">
+      </div>
+      <div style="flex:1" data-fdid="s32e5">
+        <ul class="clean">
+          <li data-fdid="s32e6">One view of every SaaS app, account, and configuration</li>
+          <li data-fdid="s32e7">Surfaces <strong style="color:var(--ink)">misconfigurations and risky settings</strong> before attackers do</li>
+          <li data-fdid="s32e8">Continuously enforces <strong style="color:var(--ink)">governance &amp; best-practice posture</strong> per tenant</li>
+          <li data-fdid="s32e9">Closes the gap the firewall can't see</li>
+        </ul>
+      </div>
+    </div>
+    <div class="spine" data-fdid="s32e10">
+      <div class="node n-data" data-fdid="s32e11"><div class="lbl" data-fdid="s32e12">Data plane<small>Insertion</small></div><div class="dot" data-fdid="s32e13"></div></div>
+      <div class="connector" data-fdid="s32e14"></div>
+      <div class="node n-control" data-fdid="s32e15"><div class="lbl" data-fdid="s32e16">Control plane<small>Oversight</small></div><div class="dot" data-fdid="s32e17"></div></div>
+      <div class="connector" data-fdid="s32e18"></div>
+      <div class="node n-saas on" data-fdid="s32e19"><div class="lbl" data-fdid="s32e20">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="s32e21"></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 18 — BRINGING IT TOGETHER -->
+  <div class="slide dark">
+    <div class="kicker" data-fdid="s33e0">Section 9 · The Tailored Approach</div>
+    <h2 style="max-width:20ch" data-fdid="s33e1">55+ products. Five repeatable cloud conversations.</h2>
+    <div class="grid" style="grid-template-columns:repeat(5,1fr);margin-top:clamp(22px,4vh,40px)" data-fdid="s33e2">
+      <div class="card dark build-bounce" style="text-align:center;border-top:4px solid var(--data)" data-fdid="s33e3"><img src="assets/FortiGate VM-white.svg" style="height:38px" data-fdid="s33e4"><h3 style="color:#fff;font-size:16px;margin-top:10px" data-fdid="s33e5">Network</h3><p style="font-size:13px" data-fdid="s33e6">FortiGate VM</p></div>
+      <div class="card dark build-bounce" style="text-align:center;border-top:4px solid var(--data)" data-fdid="s33e7"><img src="assets/FortiWeb-white.svg" style="height:38px" data-fdid="s33e8"><h3 style="color:#fff;font-size:16px;margin-top:10px" data-fdid="s33e9">Application</h3><p style="font-size:13px" data-fdid="s33e10">FortiWeb</p></div>
+      <div class="card dark build-bounce" style="text-align:center;border-top:4px solid var(--data)" data-fdid="s33e11"><img src="assets/FortiAIGate-white.svg" style="height:38px" data-fdid="s33e12"><h3 style="color:#fff;font-size:16px;margin-top:10px" data-fdid="s33e13">AI / agent</h3><p style="font-size:13px" data-fdid="s33e14">FortiAIGate</p></div>
+      <div class="card dark build-bounce" style="text-align:center;border-top:4px solid var(--control)" data-fdid="s33e15"><img src="assets/FortiCNAPP-white.svg" style="height:38px" data-fdid="s33e16"><h3 style="color:#fff;font-size:16px;margin-top:10px" data-fdid="s33e17">Posture</h3><p style="font-size:13px" data-fdid="s33e18">CNAPP · CSPM+CIEM</p></div>
+      <div class="card dark build-bounce" style="text-align:center;border-top:4px solid var(--saas)" data-fdid="s33e19"><div style="height:38px;display:flex;align-items:center;justify-content:center;font-size:30px" data-fdid="s33e20">☁️</div><h3 style="color:#fff;font-size:16px;margin-top:10px" data-fdid="s33e21">SaaS</h3><p style="font-size:13px" data-fdid="s33e22">SSPM</p></div>
+    </div>
+    <div class="row build" style="margin-top:clamp(22px,3.5vh,38px);align-items:center;justify-content:center;gap:14px" data-fdid="s33e23">
+      <span class="planebadge" style="background:rgba(48,127,226,.18);color:var(--data)" data-fdid="s33e24"><span class="num" style="background:var(--data)" data-fdid="s33e25">1</span> Data plane · Insertion</span>
+      <span style="color:#5a6474;font-size:22px" data-fdid="s33e26">→</span>
+      <span class="planebadge" style="background:rgba(144,99,205,.18);color:var(--control)" data-fdid="s33e27"><span class="num" style="background:var(--control)" data-fdid="s33e28">2</span> Control plane · Oversight</span>
+      <span style="color:#5a6474;font-size:22px" data-fdid="s33e29">→</span>
+      <span class="planebadge" style="background:rgba(60,177,126,.18);color:var(--saas)" data-fdid="s33e30"><span class="num" style="background:var(--saas)" data-fdid="s33e31">3</span> SaaS plane · Consumption</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 19 — CLOSING: PARTNER GROWTH -->
+  <div class="slide">
+    <div class="kicker" data-fdid="s34e0">Section 10 · How Partners Grow With This</div>
+    <h2 style="max-width:18ch" data-fdid="s34e1">Why this grows <span class="text-accent" data-fdid="s34e2">your</span> business</h2>
+    <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:clamp(20px,3.5vh,36px);gap:clamp(12px,1.5vw,20px)" data-fdid="s34e3">
+      <div class="card build" data-fdid="s34e4"><h3 data-fdid="s34e5">Consolidation displaces competitors</h3><p data-fdid="s34e6">Every FortiGate use case replaces multiple cloud-native services — fewer vendors to support, a clean displacement pitch.</p></div>
+      <div class="card build" data-fdid="s34e7"><h3 data-fdid="s34e8">Land &amp; expand up the curve</h3><p data-fdid="s34e9">Start at network security or CSPM/CIEM; grow into WAF, FortiAIGate, and container / code / runtime as the customer matures.</p></div>
+      <div class="card build" data-fdid="s34e10"><h3 data-fdid="s34e11">Recurring revenue + services attach</h3><p data-fdid="s34e12">Deployment, tuning, managed services, posture remediation, ongoing governance.</p></div>
+      <div class="card build" data-fdid="s34e13"><h3 data-fdid="s34e14">Trusted vendor + install base</h3><p data-fdid="s34e15">Lead with a name customers know; expand existing FortiGate / FortiManager accounts with tooling they already own.</p></div>
+    </div>
+    <p class="lead build" style="margin-top:clamp(16px,2.4vh,26px);max-width:64ch" data-fdid="s34e16"><strong style="color:var(--ink)">Future-proofing:</strong> FortiAIGate and SaaS security let you lead on surfaces customers haven't scoped yet — exactly where a trusted advisor wants to be.</p>
+  </div>
+
+  <!-- SLIDE 20 — CLOSING STATEMENT -->
+  <div class="slide title-slide" style="justify-content:center;align-items:center;text-align:center">
+    <img src="assets/Fortinet-logo-rgb-white-red.svg" alt="Fortinet" style="height:78px;margin-bottom:clamp(34px,6vh,60px)" data-fdid="s35e0">
+    <div class="row" style="gap:clamp(16px,2.4vw,32px);align-items:stretch;width:100%;max-width:1000px" data-fdid="s35e1">
+      <div class="card dark" style="flex:1;text-align:center;border-top:4px solid var(--data)" data-fdid="s35e2">
+        <div class="big" style="font-size:clamp(20px,2.2vw,30px);color:var(--data)" data-fdid="s35e3">Insertion</div>
+        <p style="margin-top:8px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#8da0b4;font-weight:700" data-fdid="s35e4">Data plane</p>
+      </div>
+      <div class="card dark" style="flex:1;text-align:center;border-top:4px solid var(--control)" data-fdid="s35e5">
+        <div class="big" style="font-size:clamp(20px,2.2vw,30px);color:var(--control)" data-fdid="s35e6">Oversight</div>
+        <p style="margin-top:8px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#8da0b4;font-weight:700" data-fdid="s35e7">Control plane</p>
+      </div>
+      <div class="card dark" style="flex:1;text-align:center;border-top:4px solid var(--saas)" data-fdid="s35e8">
+        <div class="big" style="font-size:clamp(20px,2.2vw,30px);color:var(--saas)" data-fdid="s35e9">Consumption</div>
+        <p style="margin-top:8px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#8da0b4;font-weight:700" data-fdid="s35e10">SaaS plane</p>
+      </div>
+    </div>
+    <p class="subtitle" style="max-width:40ch;margin-top:clamp(34px,6vh,60px)" data-fdid="s35e11">Meet customers where they are — and expand from there.</p>
+  </div>
+
+  <!-- DECK-SLIDES-END -->
+</div>
+
+<div id="goto-modal"><div id="goto-panel">
+  <div id="goto-header"><input id="goto-input" placeholder="Jump to slide… (number or text)"><button id="goto-fs" onclick="fdToggleFS()" title="Toggle fullscreen">⛶ Fullscreen</button></div>
+  <div id="goto-list"></div>
+</div></div>
+<div id="help">
+  <strong>Keyboard</strong><br>
+  <kbd>→</kbd> / <kbd>Space</kbd> next &nbsp; <kbd>←</kbd> previous<br>
+  <kbd>G</kbd> go to slide &nbsp; <kbd>Home</kbd>/<kbd>End</kbd> first/last<br>
+  <kbd>?</kbd> toggle help &nbsp; <kbd>Esc</kbd> close
+</div>
+
+<script>
+(function(){
+  var deck=document.getElementById("deck");
+  var slides=deck.querySelectorAll(".slide");
+  var total=slides.length;
+  var cur=0;
+  var progress=document.getElementById("progress");
+  var counter=document.getElementById("counter");
+  var help=document.getElementById("help");
+  var gotoModal=document.getElementById("goto-modal");
+  var gotoInput=document.getElementById("goto-input");
+  var gotoList=document.getElementById("goto-list");
+  function update(){progress.style.width=((cur+1)/total*100)+"%";counter.textContent=(cur+1)+" / "+total;}
+  function goTo(n){
+    n=Math.max(0,Math.min(total-1,n));
+    slides[cur].classList.remove("active");
+    cur=n;var s=slides[cur];s.classList.add("active");
+    s.querySelectorAll(".build,.build-bounce").forEach(function(b){b.classList.remove("visible")});
+    update();
+  }
+  function advanceBuild(){
+    var hidden=slides[cur].querySelectorAll(".build:not(.visible),.build-bounce:not(.visible)");
+    if(hidden.length){hidden[0].classList.add("visible");return true;}
+    return false;
+  }
+  function next(){ if(!advanceBuild()) goTo(cur+1); }
+  function prev(){ goTo(cur-1); }
+  try{ window.fdDeckGoTo=goTo; }catch(e){}
+  slides[0].classList.add("active");update();
+  document.addEventListener("keydown",function(e){
+    if(e.key==="?"){help.style.display=help.style.display==="block"?"none":"block";return;}
+    if(e.key==="Escape"){help.style.display="none";closeGoto();return;}
+    if(gotoModal.classList.contains("open"))return;
+    switch(e.key){
+      case "ArrowRight": case " ": case "Enter": case "ArrowDown": e.preventDefault(); next(); break;
+      case "ArrowLeft": case "Backspace": case "ArrowUp": e.preventDefault(); prev(); break;
+      case "Home": e.preventDefault(); goTo(0); break;
+      case "End": e.preventDefault(); goTo(total-1); break;
+      case "g": case "G": e.preventDefault(); openGoto(); break;
+      case "f": case "F": e.preventDefault(); fdToggleFS(); break;
+    }
+  });
+  deck.addEventListener("click",function(e){
+    if(e.target.tagName==="A")return;
+    if(help.style.display==="block"){help.style.display="none";return;}
+    if(e.clientX>window.innerWidth/4) next(); else prev();
+  });
+  var touchX=0;
+  deck.addEventListener("touchstart",function(e){touchX=e.touches[0].clientX});
+  deck.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>50){dx<0?next():prev();}});
+  function slideTitle(s,i){
+    var h=s.querySelector("h1,h2,h3");var lbl=s.querySelector(".kicker");
+    var t=h?h.textContent.trim():"";
+    if(lbl&&t) return lbl.textContent.trim()+" — "+t;
+    return t||lbl&&lbl.textContent.trim()||("Slide "+(i+1));
+  }
+  function openGoto(){
+    gotoList.innerHTML="";
+    slides.forEach(function(s,i){
+      var item=document.createElement("div");
+      item.className="goto-item"+(i===cur?" current":"");
+      item.innerHTML='<div class="goto-num">'+(i+1)+'</div><div>'+slideTitle(s,i)+'</div>';
+      item.addEventListener("click",function(){closeGoto();goTo(i);});
+      gotoList.appendChild(item);
+    });
+    gotoModal.classList.add("open");gotoInput.value="";gotoInput.focus();
+    var c=gotoList.querySelector(".current");if(c)c.scrollIntoView({block:"center"});
+  }
+  function closeGoto(){gotoModal.classList.remove("open");}
+  window.fdToggleFS=function(){
+    closeGoto();
+    if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(function(){});}
+    else{document.exitFullscreen();}
+  };
+  gotoInput.addEventListener("keydown",function(e){
+    e.stopPropagation();
+    if(e.key==="Escape"){closeGoto();return;}
+    if(e.key==="Enter"){
+      var n=parseInt(this.value,10);
+      if(n>=1&&n<=total){closeGoto();goTo(n-1);return;}
+      var first=gotoList.querySelector(".goto-item:not(.filtered-out)");if(first){first.click();}
+    }
+  });
+  gotoInput.addEventListener("input",function(){
+    var v=this.value.toLowerCase().trim();
+    gotoList.querySelectorAll(".goto-item").forEach(function(item){
+      var match=!v||item.textContent.toLowerCase().indexOf(v)!==-1;
+      item.classList.toggle("filtered-out",!match);
+    });
+  });
+})();
+</script>
+
+<script>/* fd-print-hook */
+(function(){
+  var shots=[];
+  window.addEventListener("beforeprint",function(){
+    document.querySelectorAll("canvas").forEach(function(c){
+      try{
+        if(!c.width||!c.height)return;
+        var img=document.createElement("img");img.src=c.toDataURL("image/png");
+        var cs=getComputedStyle(c);
+        img.style.cssText="position:"+(cs.position==="static"?"absolute":cs.position)+";left:"+c.offsetLeft+"px;top:"+c.offsetTop+"px;width:"+c.offsetWidth+"px;height:"+c.offsetHeight+"px;z-index:"+cs.zIndex;
+        c.style.visibility="hidden";c.parentNode.insertBefore(img,c.nextSibling);shots.push({img:img,canvas:c});
+      }catch(e){}
+    });
+  });
+  window.addEventListener("afterprint",function(){
+    shots.forEach(function(s){if(s.img.parentNode)s.img.parentNode.removeChild(s.img);s.canvas.style.visibility="";});shots=[];
+  });
+})();
+</script>
+
+<script>
+// Click-to-zoom functionality for images
+(function(){
+  var zoomedImg = null;
+  var overlay = null;
+  
+  function createOverlay() {
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:none;align-items:center;justify-content:center;cursor:zoom-out';
+      overlay.addEventListener('click', closeZoom);
+      document.body.appendChild(overlay);
+    }
+    return overlay;
+  }
+  
+  function openZoom(imgSrc) {
+    var ov = createOverlay();
+    zoomedImg = document.createElement('img');
+    zoomedImg.src = imgSrc;
+    zoomedImg.style.cssText = 'max-width:95%;max-height:95%;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,0.5);border-radius:8px';
+    ov.innerHTML = '';
+    ov.appendChild(zoomedImg);
+    ov.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeZoom() {
+    if (overlay) {
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+  
+  // Attach click handlers to all .zoomable elements
+  document.addEventListener('click', function(e) {
+    var zoomable = e.target.closest('.zoomable');
+    if (zoomable) {
+      var img = zoomable.querySelector('img');
+      if (img) {
+        openZoom(img.src);
+      }
+    }
+  });
+  
+  // ESC key to close
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay && overlay.style.display === 'flex') {
+      closeZoom();
+    }
+  });
+})();
+</script>
+</body>
+</html>
