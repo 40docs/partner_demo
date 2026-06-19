@@ -755,6 +755,84 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.55em;width:9px;heig
     </div>
   </div>
 
+  <!-- SLIDE 8.6 — FORTIGATE-VM ON AWS TCO -->
+  <div class="slide">
+    <div class="kicker" style="margin-top:8px" data-fdid="sfaws0">Track 1 · FortiGate VM Solution Costs</div>
+    <h2 style="max-width:32ch" data-fdid="sfaws1">FortiGate VM on AWS: Complete TCO</h2>
+    <p class="lead" style="max-width:60ch;margin-top:8px;margin-bottom:clamp(10px,1.8vh,16px)" data-fdid="sfaws2">Licensing + AWS EC2 compute (3-year reserved, c6in family).</p>
+
+    <!-- FortiGate VM on AWS Cost table -->
+    <div style="margin-top:clamp(24px,3.5vh,40px)" data-fdid="sfaws3">
+      <table style="width:100%;border-collapse:collapse;font-size:clamp(10px,0.95vw,13px)">
+        <thead>
+          <tr style="border-bottom:2px solid var(--line)">
+            <th style="text-align:left;padding:6px 8px;font-weight:700;color:var(--muted);text-transform:uppercase;font-size:9px;letter-spacing:0.5px" data-fdid="sfaws4">Component</th>
+            <th style="text-align:right;padding:6px 8px;font-weight:700;color:var(--data);font-size:10px" data-fdid="sfaws5">VM02</th>
+            <th style="text-align:right;padding:6px 8px;font-weight:700;color:var(--saas);font-size:10px" data-fdid="sfaws6">VM16</th>
+          </tr>
+        </thead>
+        <tbody class="build">
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:7px 8px;font-weight:600;color:var(--ink);font-size:clamp(10px,0.92vw,12px)" data-fdid="sfaws7">Throughput</td>
+            <td style="padding:7px 8px;text-align:right" data-fdid="sfaws8">100-500 Mbps</td>
+            <td style="padding:7px 8px;text-align:right" data-fdid="sfaws9">Up to 5 Gbps</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:7px 8px;font-weight:600;color:var(--ink);font-size:clamp(10px,0.92vw,12px)" data-fdid="sfaws10">FortiGate License (2x HA)</td>
+            <td style="padding:7px 8px;text-align:right;font-weight:600" data-fdid="sfaws11">$4,898/yr</td>
+            <td style="padding:7px 8px;text-align:right;font-weight:600" data-fdid="sfaws12">$41,900/yr</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:7px 8px;font-weight:600;color:var(--ink);font-size:clamp(10px,0.92vw,12px)" data-fdid="sfaws13">AWS Compute (2x c6in.large / c6in.4xlarge)</td>
+            <td style="padding:7px 8px;text-align:right;font-weight:600" data-fdid="sfaws14">$752/yr</td>
+            <td style="padding:7px 8px;text-align:right;font-weight:600" data-fdid="sfaws15">$6,013/yr</td>
+          </tr>
+          <tr style="border-bottom:2px solid var(--accent);background:rgba(218,41,28,0.05)">
+            <td style="padding:8px;font-weight:800;color:var(--accent);font-size:clamp(11px,1vw,14px)" data-fdid="sfaws16">FortiGate VM Total</td>
+            <td style="padding:8px;text-align:right;font-weight:900;color:var(--accent);font-size:clamp(12px,1.1vw,15px)" data-fdid="sfaws17">$5,650/yr</td>
+            <td style="padding:8px;text-align:right;font-weight:900;color:var(--accent);font-size:clamp(12px,1.1vw,15px)" data-fdid="sfaws18">$47,913/yr</td>
+          </tr>
+        </tbody>
+        <tbody class="build">
+          <tr style="background:rgba(60,177,126,0.08)">
+            <td style="padding:10px 8px;font-weight:700;color:var(--saas);font-size:clamp(11px,1vw,14px)" data-fdid="sfaws19">vs. AWS Network Firewall <span style="font-weight:500;color:var(--muted);font-size:9px">(comparable scale)</span></td>
+            <td style="padding:10px 8px;text-align:right;font-weight:800;color:var(--saas);font-size:clamp(11px,1.05vw,14px)" data-fdid="sfaws20">~94% savings</td>
+            <td style="padding:10px 8px;text-align:right;font-weight:800;color:var(--saas);font-size:clamp(11px,1.05vw,14px)" data-fdid="sfaws21">~94% savings</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Datasheet + EC2 pricing screenshots -->
+    <div class="build" style="margin-top:clamp(28px,4vh,44px)" data-fdid="sfaws22">
+      <h3 style="font-size:clamp(12px,1.1vw,15px);margin-bottom:clamp(8px,1.2vh,12px);color:var(--muted)" data-fdid="sfaws23">Source: FortiGate-VM AWS Performance Matrix &amp; AWS Pricing Calculator (click to zoom)</h3>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:clamp(10px,1.2vw,14px);transform:scale(0.9);transform-origin:top center" data-fdid="sfaws24">
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="sfaws25">
+          <div style="padding:6px 8px;background:var(--card2);border-bottom:1px solid var(--line)" data-fdid="sfaws26">
+            <div style="font-size:10px;font-weight:700;color:var(--ink)" data-fdid="sfaws27">Performance Matrix (AWS)</div>
+          </div>
+          <img src="assets/awsfortigatevmdatasheet.png" alt="FortiGate-VM AWS Performance Datasheet" style="width:100%;display:block" data-fdid="sfaws28">
+        </div>
+        <div class="zoomable" style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);cursor:pointer" data-fdid="sfaws29">
+          <div style="padding:6px 8px;background:rgba(48,127,226,0.08);border-bottom:1px solid var(--line)" data-fdid="sfaws30">
+            <div style="font-size:10px;font-weight:700;color:var(--data)" data-fdid="sfaws31">c6in EC2 pricing (3-yr reserved)</div>
+          </div>
+          <img src="assets/awsec2costs.png" alt="AWS c6in EC2 instance pricing" style="width:100%;display:block" data-fdid="sfaws32">
+        </div>
+      </div>
+    </div>
+
+    <p class="lead build" style="margin-top:clamp(12px,2vh,18px);max-width:72ch;font-size:clamp(11px,1vw,13px);opacity:0.85" data-fdid="sfaws33">Notes: Compute = 2x c6in instances at 3-yr reserved effective rate (c6in.large $0.0429/hr, c6in.4xlarge $0.3432/hr) × 8,760 hrs. FortiGate BYOL license is cloud-agnostic (same as Azure). Savings vs. AWS Network Firewall at comparable scale — VM02 vs 100 TB/mo, VM16 vs 1,000 TB/mo.</p>
+
+    <div class="spine" data-fdid="sfaws34">
+      <div class="node n-data on" data-fdid="sfaws35"><div class="lbl" data-fdid="sfaws36">Data plane<small>Insertion</small></div><div class="dot" data-fdid="sfaws37"></div></div>
+      <div class="connector" data-fdid="sfaws38"></div>
+      <div class="node n-control" data-fdid="sfaws39"><div class="lbl" data-fdid="sfaws40">Control plane<small>Oversight</small></div><div class="dot" data-fdid="sfaws41"></div></div>
+      <div class="connector" data-fdid="sfaws42"></div>
+      <div class="node n-saas" data-fdid="sfaws43"><div class="lbl" data-fdid="sfaws44">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="sfaws45"></div></div>
+    </div>
+  </div>
+
   <!-- SLIDE 9 — TRACK 1: TWO CONSOLIDATION STORIES -->
   <div class="slide dark">
     <div class="kicker" data-fdid="s15e0">Track 1 · Why it's a partner growth engine</div>
