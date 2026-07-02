@@ -828,6 +828,45 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.55em;width:9px;heig
     </div>
   </div>
 
+  <!-- SLIDE 8.7 — DEPLOYMENT / INSERTION -->
+  <div class="slide">
+    <div class="kicker" style="margin-top:8px" data-fdid="sdep0">Track 1 · Deployment &amp; Insertion</div>
+    <h2 style="max-width:34ch" data-fdid="sdep1">Inserting the firewall: same goal, different mechanics</h2>
+    <p class="lead" style="max-width:62ch;margin-top:10px" data-fdid="sdep2">The FortiGate insertion pattern maps to how each cloud already steers traffic — nothing exotic to learn.</p>
+
+    <div class="row build" style="margin-top:clamp(20px,3.5vh,36px);gap:clamp(20px,3vw,40px)" data-fdid="sdep3">
+      <div class="card" style="flex:1;background:rgba(48,127,226,0.06);border-left:4px solid var(--data)" data-fdid="sdep4">
+        <h3 style="color:var(--dark);font-size:clamp(18px,2vw,24px);margin-bottom:14px" data-fdid="sdep5">Azure — steer with routes, as always</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:clamp(13px,1.3vw,16px);color:var(--ink);line-height:1.45" data-fdid="sdep6">Public IP associations and route-table (UDR) manipulation steer traffic to the firewall.</li>
+          <li style="font-size:clamp(13px,1.3vw,16px);color:var(--ink);line-height:1.45" data-fdid="sdep7">The mechanics of inserting FortiGate are <strong style="color:var(--dark)">identical to Azure's native firewall</strong> — the same insertion pattern your team already runs.</li>
+        </ul>
+      </div>
+      <div class="card" style="flex:1;background:rgba(60,177,126,0.06);border-left:4px solid var(--saas)" data-fdid="sdep8">
+        <h3 style="color:var(--dark);font-size:clamp(18px,2vw,24px);margin-bottom:14px" data-fdid="sdep9">AWS — simplified insertion</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:clamp(13px,1.3vw,16px);color:var(--ink);line-height:1.45" data-fdid="sdep10">Depending on the architecture, insertion is <strong style="color:var(--dark)">simpler than AWS Network Firewall</strong>.</li>
+          <li style="font-size:clamp(13px,1.3vw,16px);color:var(--ink);line-height:1.45" data-fdid="sdep11">No edge route-table manipulation pointing at VPC endpoints (VPCEs).</li>
+          <li style="font-size:clamp(13px,1.3vw,16px);color:var(--ink);line-height:1.45" data-fdid="sdep12">Public IPs live on the ALB/NLB or the FortiGate directly; routes point back to the firewall.</li>
+          <li style="font-size:clamp(13px,1.3vw,16px);color:var(--ink);line-height:1.45" data-fdid="sdep13">A more traditional, <strong style="color:var(--dark)">less error-prone</strong> approach.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="build" style="margin-top:clamp(22px,4vh,40px);padding:clamp(16px,2.6vh,26px);background:rgba(60,177,126,0.10);border-left:4px solid var(--saas);border-radius:8px" data-fdid="sdep14">
+      <h3 style="color:var(--saas);font-size:clamp(15px,1.5vw,19px);margin-bottom:6px" data-fdid="sdep15">Fail-closed by design</h3>
+      <p style="font-size:clamp(13px,1.4vw,17px);line-height:1.5;color:var(--ink)" data-fdid="sdep16">Traffic only reaches the internet by passing <strong style="color:var(--dark)">through the firewall</strong>. A missing route-table entry doesn't expose an instance publicly without inspection — it simply doesn't connect. Misconfiguration fails safe.</p>
+    </div>
+
+    <div class="spine" data-fdid="sdep17">
+      <div class="node n-data on" data-fdid="sdep18"><div class="lbl" data-fdid="sdep19">Data plane<small>Insertion</small></div><div class="dot" data-fdid="sdep20"></div></div>
+      <div class="connector" data-fdid="sdep21"></div>
+      <div class="node n-control" data-fdid="sdep22"><div class="lbl" data-fdid="sdep23">Control plane<small>Oversight</small></div><div class="dot" data-fdid="sdep24"></div></div>
+      <div class="connector" data-fdid="sdep25"></div>
+      <div class="node n-saas" data-fdid="sdep26"><div class="lbl" data-fdid="sdep27">SaaS plane<small>Consumption</small></div><div class="dot" data-fdid="sdep28"></div></div>
+    </div>
+  </div>
+
   <!-- SLIDE 9 — TRACK 1: TWO CONSOLIDATION STORIES -->
   <div class="slide dark">
     <div class="kicker" data-fdid="s15e0">Track 1 · Why it's a partner growth engine</div>
